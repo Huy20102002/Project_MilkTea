@@ -19,6 +19,12 @@ import { ProfileComponent } from './screen/profile/profile.component';
 import { RegisterComponent } from './screen/register/register.component';
 import { ProductAdminComponent } from './screen/admin/product/product.component';
 import { NotfoundComponent } from './screen/notfound/notfound.component';
+import { CartAdminComponent } from './screen/admin/cart/cart.component';
+import { UserComponent } from './screen/admin/user/user.component';
+import { CommentComponent } from './screen/admin/comment/comment.component';
+import { SlideComponent } from './screen/admin/slide/slide.component';
+import { SizeComponent } from './screen/admin/size/size.component';
+import { ToppingComponent } from './screen/admin/topping/topping.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -58,6 +64,9 @@ const routes: Routes = [
         path: "",component: DashboardComponent
       },
       {
+        path: "donhang",component: CartAdminComponent
+      },
+      {
         path: "danhmuc",component:CategoryComponent
       },
       {
@@ -74,6 +83,21 @@ const routes: Routes = [
       },
       {
         path: "sanpham/edit/:id",component: EditproductsComponent
+      },
+      {
+        path: "taikhoan",component: UserComponent
+      },
+      {
+        path:"binhluan",component:CommentComponent
+      },
+      {
+        path: "slide",component: SlideComponent
+      },
+      {
+        path: "size",component: SizeComponent
+      },
+      {
+        path: "topping",component:ToppingComponent
       }
     ]
   },
