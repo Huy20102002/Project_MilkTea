@@ -33,6 +33,11 @@ import { AddUserComponent } from './screen/admin/user/add-user/add-user.componen
 import { EditUserComponent } from './screen/admin/user/edit-user/edit-user.component';
 import { NotfoundComponent } from './screen/notfound/notfound.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { SizeComponent } from './screen/admin/size/size.component';
+import { ToppingComponent } from './screen/admin/topping/topping.component';
+import { SlideComponent } from './screen/admin/slide/slide.component';
+import { VoucherComponent } from './screen/admin/voucher/voucher.component';
+import { CommentComponent } from './screen/admin/comment/comment.component';
 
 
 @NgModule({
@@ -63,6 +68,11 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     AddUserComponent,
     EditUserComponent,
     NotfoundComponent,
+    SizeComponent,
+    ToppingComponent,
+    SlideComponent,
+    VoucherComponent,
+    CommentComponent,
 
   ],
   imports: [
