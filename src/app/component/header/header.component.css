@@ -1,0 +1,21 @@
+/* .zindex{
+    /* z-index: 100000;
+    position: relative; */
+/* } */
+/* .banner{
+   display: none;
+} */ 
+.sticky{
+    background-color: #fff1f2ce;
+    position: fixed;
+    top: 0;
+    z-index: 1000000;
+    box-shadow: 0 4px 8px 0 rgba(101, 95, 95, 0.2), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    transition: top 0.3s;
+    display: block;
+
+}
+.navs{
+    transition: all .5s ease-in-out;
+
+}

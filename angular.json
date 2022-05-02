@@ -25,9 +25,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+            
             ],
             "styles": [
               "src/styles.css"
+              
             ],
             "scripts": []
           },
@@ -91,12 +93,46 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "milktea:ionic-cordova-build",
+            "devServerTarget": "milktea:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "milktea:ionic-cordova-build:production",
+              "devServerTarget": "milktea:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "milktea:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "milktea:build:production"
+            }
           }
         }
       }
