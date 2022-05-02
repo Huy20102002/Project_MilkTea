@@ -32,6 +32,7 @@ import { EditNewsComponent } from './screen/admin/news/edit-news/edit-news.compo
 import { AddUserComponent } from './screen/admin/user/add-user/add-user.component';
 import { EditUserComponent } from './screen/admin/user/edit-user/edit-user.component';
 import { NotfoundComponent } from './screen/notfound/notfound.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { NotfoundComponent } from './screen/notfound/notfound.component';
     ReactiveFormsModule,
     HttpClientModule,
     IvyCarouselModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
