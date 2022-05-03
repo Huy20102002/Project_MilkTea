@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="title_products pb-3 shadow flex justify-between">
+        <div>
+            <p class="font-light text-[20px] ml-3 pt-3">Đơn Hàng | DS Đơn Hàng</p>
+        </div>
+        <div class="mt-3">
+            <a routerLink="/admin/danhmuc/add" class="bg-blue-600 rounded px-3 py-2 mr-3 pb-3 cursor-pointer hover:bg-blue-800 duration-300 text-white text-[14px]">Thêm Danh Mục</a>
+        </div>
+        
+    </div>
+    <div class="search_order">
+        <form action="" class="flex p-5">
+            <input type="text" class="w-full rounded-l-md  border p-2 focus:outline-none focus:border-blue-600 text-sm" placeholder="Nhập tên khách hàng or số điện thoại">
+            <select class="border outline-none">
+                <option value="">--Trạng thái--</option>
+                <option value="">Đơn hàng mới</option>
+                <option value="">Đã xác nhận</option>
+                <option value="">Đang giao hàng</option>
+                <option value="">Đã giao hàng</option>
+                <option value="">Đã hủy</option>
+            </select>
+        </form>
+    </div>
+    <div class="mt-5">
+        <table class="w-full table-auto text-left divide-y divide-gray-300">
+            <thead class="bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th class="text-gray-500 px-6 py-3">STT</th>
+                    <th class="text-gray-500 px-6 py-3">Khách Hàng</th>
+                    <th class="text-gray-500 px-6 py-3">Tổng tiền</th>
+                    <th class="text-gray-500 px-6 py-3">Trạng thái</th>
+                    <th class="text-gray-500 px-6 py-3">Thời gian đặt hàng</th>
+                    <th class="text-gray-500 px-6 py-3">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="px-6 py-4">s</td>
+                    <td class="px-6 py-4">s</td>
+                    <td class="px-6 py-4 "><span class="bg-green-100 text-green-800 font-semibold px-3 py-1 rounded">Đang giao hàng</span></td>
+                    <td class="px-6 py-4">s</td>
+                    <td class="px-6 py-4">s</td>
+                    <td class="px-6 py-4">
+                       
+                        <a routerLink="/admin/donhang/2/chitiet" 
+                            class="cursor-pointer font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Chi tiết</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

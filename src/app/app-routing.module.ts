@@ -6,8 +6,8 @@ import { AddCateComponent } from './screen/admin/category/add-cate/add-cate.comp
 import { CategoryComponent } from './screen/admin/category/category.component';
 import { EditCategoryComponent } from './screen/admin/category/edit-category/edit-category.component';
 import { DashboardComponent } from './screen/admin/dashboard/dashboard.component';
-import { AddproductsComponent } from './screen/admin/product/addproducts/addproducts.component';
-import { EditproductsComponent } from './screen/admin/product/editproducts/editproducts.component';
+import { AddproductsComponent } from './screen/admin/product-admin/addproducts/addproducts.component';
+import { EditproductsComponent } from './screen/admin/product-admin/editproducts/editproducts.component';
 import { CartComponent } from './screen/cart/cart.component';
 import { HomeComponent } from './screen/home/home.component';
 import { HomelayoutComponent } from './screen/homelayout/homelayout.component';
@@ -17,14 +17,15 @@ import { ProductDetailsComponent } from './screen/product-details/product-detail
 import { ProductComponent } from './screen/product/product.component';
 import { ProfileComponent } from './screen/profile/profile.component';
 import { RegisterComponent } from './screen/register/register.component';
-import { ProductAdminComponent } from './screen/admin/product/product.component';
 import { NotfoundComponent } from './screen/notfound/notfound.component';
-import { CartAdminComponent } from './screen/admin/cart/cart.component';
 import { UserComponent } from './screen/admin/user/user.component';
 import { CommentComponent } from './screen/admin/comment/comment.component';
 import { SlideComponent } from './screen/admin/slide/slide.component';
 import { SizeComponent } from './screen/admin/size/size.component';
 import { ToppingComponent } from './screen/admin/topping/topping.component';
+import { ProductAdminComponent } from './screen/admin/product-admin/product-admin.component';
+import { OrderComponent } from './screen/admin/order/order.component';
+import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -64,7 +65,10 @@ const routes: Routes = [
         path: "",component: DashboardComponent
       },
       {
-        path: "donhang",component: CartAdminComponent
+        path: "donhang",component: OrderComponent
+      },
+      {
+        path: "donhang/:id/chitiet",component: OrderDetailsComponent
       },
       {
         path: "danhmuc",component:CategoryComponent

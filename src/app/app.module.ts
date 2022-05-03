@@ -25,8 +25,8 @@ import { UserComponent } from './screen/admin/user/user.component';
 import { CategoryComponent } from './screen/admin/category/category.component';
 import { AddCateComponent } from './screen/admin/category/add-cate/add-cate.component';
 import { EditCategoryComponent } from './screen/admin/category/edit-category/edit-category.component';
-import { EditproductsComponent } from './screen/admin/product/editproducts/editproducts.component';
-import { AddproductsComponent } from './screen/admin/product/addproducts/addproducts.component';
+import { EditproductsComponent } from './screen/admin/product-admin/editproducts/editproducts.component';
+import { AddproductsComponent } from './screen/admin/product-admin/addproducts/addproducts.component';
 import { AddNewsComponent } from './screen/admin/news/add-news/add-news.component';
 import { EditNewsComponent } from './screen/admin/news/edit-news/edit-news.component';
 import { AddUserComponent } from './screen/admin/user/add-user/add-user.component';
@@ -38,6 +38,9 @@ import { ToppingComponent } from './screen/admin/topping/topping.component';
 import { SlideComponent } from './screen/admin/slide/slide.component';
 import { VoucherComponent } from './screen/admin/voucher/voucher.component';
 import { CommentComponent } from './screen/admin/comment/comment.component';
+import { ProductAdminComponent } from './screen/admin/product-admin/product-admin.component';
+import { OrderComponent } from './screen/admin/order/order.component';
+import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { CommentComponent } from './screen/admin/comment/comment.component';
     SlideComponent,
     VoucherComponent,
     CommentComponent,
+    ProductAdminComponent,
+    OrderComponent,
+    OrderDetailsComponent,
 
   ],
   imports: [
