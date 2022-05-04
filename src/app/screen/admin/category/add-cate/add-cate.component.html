@@ -11,17 +11,16 @@
     </div>
     <div class="mt-5">
         <div class="form">
-            <form action="" class="px-3 py-2">
+            <form action="" class="px-3 py-2" (submit)="add()" [formGroup]="formCate">
                 <div class="mb-6 w-full group">
                     <label for="">Tên danh mục</label>
-                    <input type="text"
+                    <input type="text" formControlName="name"
                         class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
                         placeholder="Nhập tên danh mục">
                 </div>
                 
              <div class="mb-6">
-                <button  
-                class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Thêm danh mục</button>             </div>
+                <button class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Thêm danh mục</button>             </div>
             </form>
         </div>
     </div>

@@ -41,6 +41,7 @@ import { CommentComponent } from './screen/admin/comment/comment.component';
 import { ProductAdminComponent } from './screen/admin/product-admin/product-admin.component';
 import { OrderComponent } from './screen/admin/order/order.component';
 import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
+import { PipeProductPipe } from './untils/pipes/pipe-product.pipe';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { OrderDetailsComponent } from './screen/admin/order-details/order-detail
     ProductAdminComponent,
     OrderComponent,
     OrderDetailsComponent,
+    PipeProductPipe,
 
   ],
   imports: [

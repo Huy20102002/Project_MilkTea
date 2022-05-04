@@ -1,64 +1,26 @@
 <div class="content">
     <div class="title_products pb-3 shadow flex justify-between ">
         <div>
-            <p class="font-light text-[20px] ml-3 pt-3">Danh Mục | Cập nhật danh mục</p>
+            <p class="font-light text-[20px] ml-3 pt-3">Danh Mục | Thêm danh mục</p>
         </div>
         <div class="mt-3">
-            <a routerLink="/admin/sanpham"
+            <a routerLink="/admin/danhmuc"
                 class="bg-blue-600 rounded px-3 py-2 mr-3 pb-3 cursor-pointer hover:bg-blue-800 duration-300 text-white text-[14px]">
                 Danh Sách danh mục</a>
         </div>
     </div>
     <div class="mt-5">
         <div class="form">
-            <form action="" class="px-3 py-2">
+            <form action="" class="px-3 py-2" (submit)="update()" [formGroup]="formCate">
                 <div class="mb-6 w-full group">
-                    <label for="">Tên sản phẩm</label>
-                    <input type="text"
+                    <label for="">Tên danh mục</label>
+                    <input type="text" formControlName="name"
                         class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
-                        placeholder="Nhập tên sản phẩm">
+                        placeholder="Nhập tên danh mục">
                 </div>
-                <div class="mb-6 w-full group">
-                    <label for="">Giá tiền</label>
-                    <input type="number"
-                        class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
-                        placeholder="Nhập giá tiền">
-                </div>
-                <div class="mb-6 w-full group">
-                    <label for="">Mô tả sản phẩm</label>
-                    <editor apiKey="353jqw85jsoes2jewxuo89pajzhtanp4i9q7mirmyzyabz3q"></editor>
-                </div>
-              <div class="mb-6 md:flex">
-                <div class="mb-6 w-full group px-2">
-                    <label for="">Danh mục sản phẩm</label>
-                    <select name="" id="" class="w-full focus:border-orange-500 border rounded py-1 mt-3 px-3">
-                        <option value="">--Chọn danh mục sản phẩm --</option>
-                    </select>
-                </div>
-                <div class="mb-6 w-full group">
-                    <label for="">Trạng thái sản phẩm</label>
-                    <select name="" id="" class="w-full focus:border-orange-500 border rounded py-1 mt-3 px-3">
-                        <option value="">--Chọn trạng thái sản phẩm --</option>
-                    </select>
-                </div>
-              </div>
-             <div class="mb-6 w-full group">
-                 <label for="">Hình ảnh</label>
-                 <input type="file" class="border block w-full text-sm text-slate-500
-                 file:mr-4 file:py-2 file:px-4
-                 file:rounded-full file:border-0
-                 file:text-sm file:font-semibold
-                 file:bg-violet-50 file:text-violet-700
-                 hover:file:bg-violet-100
-               "/>
-             </div>
+                
              <div class="mb-6">
-                 <label for="">Xem trước hình ảnh</label>
-                 <img src="" alt="">
-             </div>
-             <div class="mb-6">
-                <button  
-                class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Cập nhật danh mục</button>             </div>
+                <button class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Cập nhật danh mục</button>             </div>
             </form>
         </div>
     </div>
