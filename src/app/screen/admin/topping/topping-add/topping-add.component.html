@@ -1,1 +1,32 @@
-<p>topping-add works!</p>
+<div class="content">
+    <div class="title_products pb-3 shadow flex justify-between ">
+        <div>
+            <p class="font-light text-[20px] ml-3 pt-3">Topping Sản Phẩm | Thêm Topping</p>
+        </div>
+        <div class="mt-3">
+            <a routerLink="/admin/topping"
+                class="bg-blue-600 rounded px-3 py-2 mr-3 pb-3 cursor-pointer hover:bg-blue-800 duration-300 text-white text-[14px]">
+                Danh Sách Topping</a>
+        </div>
+    </div>
+    <div class="mt-5">
+        <div class="form">
+            <form action="" class="px-3 py-2" (submit)="addTopping()" [formGroup]="formTopping">
+                <div class="mb-6 w-full group">
+                    <label for="">Tên  Size</label>
+                    <input type="text" formControlName="name"
+                        class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
+                        placeholder="Nhập tên Topping">
+                </div>
+                <div class="mb-6 w-full group">
+                    <label for="">Giá Tiền</label>
+                    <input type="text" formControlName="price"
+                        class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
+                        placeholder="Nhập giá Topping">
+                </div>
+             <div class="mb-6">
+                <button class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Thêm</button></div>
+            </form>
+        </div>
+    </div>
+</div>
