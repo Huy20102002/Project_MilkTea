@@ -26,6 +26,10 @@ import { ToppingComponent } from './screen/admin/topping/topping.component';
 import { ProductAdminComponent } from './screen/admin/product-admin/product-admin.component';
 import { OrderComponent } from './screen/admin/order/order.component';
 import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
+import { SizeAddComponent } from './screen/admin/size/size-add/size-add.component';
+import { SizeEidtComponent } from './screen/admin/size/size-eidt/size-eidt.component';
+import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-add.component';
+import { ToppingEditComponent } from './screen/admin/topping/topping-edit/topping-edit.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -101,7 +105,19 @@ const routes: Routes = [
         path: "size",component: SizeComponent
       },
       {
+        path: "size/add",component:SizeAddComponent
+      },
+      {
+        path: "size/edit/:id",component:SizeEidtComponent
+      },
+      {
         path: "topping",component:ToppingComponent
+      },
+      {
+        path: "topping/add",component:ToppingAddComponent
+      },
+      {
+        path: "topping/edit/:id",component:ToppingEditComponent
       }
     ]
   },

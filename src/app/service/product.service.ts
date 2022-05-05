@@ -14,6 +14,12 @@ export class ProductService {
   addProduct(data:any):Observable<any>{
     return this.http.post<any>(`${environment.api_product}`,data);
   }
+  getId(id:any):Observable<any>{
+    return this.http.get<any>(`${environment.api_product}/${id}`);
+  }
+  update(id:any,data:any):Observable<any>{
+    return this.http.put<any>(`${environment.api_product}/${id}`,data);
+  }
   delete(id:any):Observable<any>{
     return this.http.delete<any>(`${environment.api_product}/${id}`);
   }

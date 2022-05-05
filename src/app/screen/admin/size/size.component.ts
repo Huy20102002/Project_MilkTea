@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SizeService } from 'src/app/service/size.service';
 
 @Component({
   selector: 'app-size',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SizeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private SizeService: SizeService) { }
+  sizeData: any;
   ngOnInit(): void {
+    this.getAllSize();
   }
-
+  getAllSize() {
+    this.SizeService.getAll().subscribe(res => { 
+      const { data } = res; 
+      this.sizeData = data
+     })
+  }
+  deleteSize(id:any){
+    this.sizeData = this.sizeData.filter((item:any)=>item.id != id);
+    this.SizeService.delete(id).subscribe(res=>{})
+  }
 }

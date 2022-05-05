@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +42,12 @@ import { ProductAdminComponent } from './screen/admin/product-admin/product-admi
 import { OrderComponent } from './screen/admin/order/order.component';
 import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
 import { PipeProductPipe } from './untils/pipes/pipe-product.pipe';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
+import { SizeAddComponent } from './screen/admin/size/size-add/size-add.component';
+import { SizeEidtComponent } from './screen/admin/size/size-eidt/size-eidt.component';
+import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-add.component';
+import { ToppingEditComponent } from './screen/admin/topping/topping-edit/topping-edit.component';
 
 
 @NgModule({
@@ -81,6 +87,10 @@ import { PipeProductPipe } from './untils/pipes/pipe-product.pipe';
     OrderComponent,
     OrderDetailsComponent,
     PipeProductPipe,
+    SizeAddComponent,
+    SizeEidtComponent,
+    ToppingAddComponent,
+    ToppingEditComponent,
 
   ],
   imports: [
@@ -91,9 +101,29 @@ import { PipeProductPipe } from './untils/pipes/pipe-product.pipe';
     HttpClientModule,
     IvyCarouselModule,
     IonicModule.forRoot(),
-    EditorModule
+    EditorModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.GOOGLE_CLIENT_ID
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
