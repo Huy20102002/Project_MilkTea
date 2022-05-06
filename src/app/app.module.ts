@@ -48,6 +48,11 @@ import { SizeAddComponent } from './screen/admin/size/size-add/size-add.componen
 import { SizeEidtComponent } from './screen/admin/size/size-eidt/size-eidt.component';
 import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-add.component';
 import { ToppingEditComponent } from './screen/admin/topping/topping-edit/topping-edit.component';
+import { AddSlideComponent } from './screen/admin/slide/add-slide/add-slide.component';
+import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.component';
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
 
 
 @NgModule({
@@ -91,6 +96,9 @@ import { ToppingEditComponent } from './screen/admin/topping/topping-edit/toppin
     SizeEidtComponent,
     ToppingAddComponent,
     ToppingEditComponent,
+    AddSlideComponent,
+    EditSlideComponent,
+    ConvertVietNamPipe,
 
   ],
   imports: [
@@ -102,7 +110,9 @@ import { ToppingEditComponent } from './screen/admin/topping/topping-edit/toppin
     IvyCarouselModule,
     IonicModule.forRoot(),
     EditorModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
     {
@@ -122,7 +132,8 @@ import { ToppingEditComponent } from './screen/admin/topping/topping-edit/toppin
         }
       } as SocialAuthServiceConfig,
     },
-    Title
+    Title,
+    ConvertVietNamPipe
   ],
   bootstrap: [AppComponent]
 })

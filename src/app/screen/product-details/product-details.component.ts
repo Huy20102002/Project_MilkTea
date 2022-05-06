@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ProductService: ProductService, private Activated: ActivatedRoute) { }
   selectedColor: any;
+  dataColor:any;
   valueColorSize: any;
   valueColorTopping: any;
   // sizenho: number = 1;
@@ -28,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
     'Đào miếng + 10.000 VNĐ', 'Thạch dừa + 10.000 VNĐ', 'Sữa tươi không đường + 10.000 VNĐ'
   ]
   ngOnInit(): void {
-
+    this.getProduct();
   }
   selectedSize(a: any) {
     this.valueColorSize = a;
@@ -36,6 +39,14 @@ export class ProductDetailsComponent implements OnInit {
   }
   selectedTopping(a: any) {
     this.valueColorTopping = a;
+  }
+  getProduct() {
+    this.Activated.params.subscribe(res => {
+      const { id } = res;
+      this.ProductService.getName(id).subscribe(value => {
+        console.log(value);
+      });
+    });
   }
 
 

@@ -23,7 +23,8 @@
                 <ng-container *ngFor="let item of dataProduct">
                 <tr>
                     <td class="px-6 py-4">{{item.id}}</td>
-                    <td class="px-6 py-4">{{item.name}}</td>
+                    <td class="px-6 py-4">{{item.name}}
+                    </td>
                     <td class="px-6 py-4 "><span class="{{item.status==1 ? 'bg-green-100 text-green-800': 'bg-red-100 text-red-800'}} font-semibold px-3 py-1 rounded">{{item.status | pipeProduct}}</span></td>
                     <td class="px-6 py-4">{{item.view}}</td>
                     <td class="px-6 py-4">{{item.status}}</td>

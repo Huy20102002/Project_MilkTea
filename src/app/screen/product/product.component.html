@@ -90,75 +90,20 @@
              </div>
          </div>
         <div class="product md:grid md:grid-cols-4 md:gap-8 items-center">
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <a routerLink="/sanpham/chitiet/tradaocamsa"><img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt=""></a>
+            <ng-container *ngFor="let item of dataProduct">
+                <div class="product_milk mx-4 border border-gray-200 ">
+                    <div class="milk_img">
+                        <a routerLink="/sanpham/chitiet/{{item.link_sp}}"><img [src]="item.image" class="w-[262px]" alt=""></a>
+                    </div>
+                    <div class="milk_text text-center bg-gray-100 py-4 ">
+                        <p class="font-semibold">{{item.name}}</p>
+                        <p>{{item.price| currency: "VND"}}</p>
+                        <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
+                    </div>
                 </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
-            <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>      <div class="product_milk mx-4 border border-gray-200 ">
-                <div class="milk_img">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" alt="">
-                </div>
-                <div class="milk_text text-center bg-gray-100 py-4 ">
-                    <p class="font-semibold">Trà Sữa Trân châu đường đen</p>
-                    <p>{{29000| currency: "VND"}}</p>
-                    <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
-                </div>
-            </div>
+            </ng-container>
+            
+           
         </div>
      </div>
 </div>

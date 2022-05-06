@@ -12,11 +12,13 @@
     <div class="mt-5">
         <div class="form">
             <form [formGroup]="formProduct" (ngSubmit)="updateProduct()" class="px-3 py-2">
+             <!-- <input type="text" (change)="convertvietnam(linkProduct)"> -->
                 <div class="mb-6 w-full group">
                     <label for="">Tên sản phẩm</label>
                     <input type="text" formControlName="name"
                         class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
                         placeholder="Nhập tên sản phẩm">
+                    <!-- <input type="text" formControlName="link_sp" value="{{linkProduct|convertVietNam}}"> -->
                 </div>
                 <div class="mb-6 w-full group">
                     <label for="">Giá tiền</label>
@@ -47,9 +49,10 @@
                     </select>
                 </div>
               </div>
+
              <div class="mb-6 w-full group">
                  <label for="">Hình ảnh</label>
-                 <input formControlName="image" type="file" class="border block w-full text-sm text-slate-500
+                 <input (change)="changeImage($event)" type="file" class="border block w-full text-sm text-slate-500
                  file:mr-4 file:py-2 file:px-4
                  file:rounded-full file:border-0
                  file:text-sm file:font-semibold
@@ -59,12 +62,13 @@
              </div>
              <div class="mb-6">
                  <label for="">Xem trước hình ảnh</label>
-                 <img src="" alt="">
+                 <img [src]="displayimage" class="w-[100px]" alt="">
              </div>
              <div class="mb-6">
                 <button  
                 class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Cập nhật sản phẩm</button>             </div>
             </form>
         </div>
+
     </div>
 </div>

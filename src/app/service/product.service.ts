@@ -17,6 +17,9 @@ export class ProductService {
   getId(id:any):Observable<any>{
     return this.http.get<any>(`${environment.api_product}/${id}`);
   }
+  getName(name:any):Observable<any>{
+    return this.http.get<any>(`${environment.api_product}/getname/${name}`);
+  }
   update(id:any,data:any):Observable<any>{
     return this.http.put<any>(`${environment.api_product}/${id}`,data);
   }

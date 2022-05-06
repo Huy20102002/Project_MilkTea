@@ -30,6 +30,8 @@ import { SizeAddComponent } from './screen/admin/size/size-add/size-add.componen
 import { SizeEidtComponent } from './screen/admin/size/size-eidt/size-eidt.component';
 import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-add.component';
 import { ToppingEditComponent } from './screen/admin/topping/topping-edit/topping-edit.component';
+import { AddSlideComponent } from './screen/admin/slide/add-slide/add-slide.component';
+import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -100,6 +102,11 @@ const routes: Routes = [
       },
       {
         path: "slide",component: SlideComponent
+      },
+      {
+        path: "slide/add",component: AddSlideComponent
+      },{
+        path: "slide/edit/:id",component: EditSlideComponent
       },
       {
         path: "size",component: SizeComponent
