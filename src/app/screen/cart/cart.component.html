@@ -12,7 +12,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="flex">
+                        <td class="flex items-center">
+                            <button class="px-2"><i class="far fa-trash-alt text-[17px]"></i></button>
                             <div class="img_Cart p-3 md:block hidden">
                                 <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png"
                                     class="w-[100px]" alt="">
@@ -29,9 +30,9 @@
                             <span class="font-bold"> 30.000 VNĐ</span>
                         </td>
                         <td>
-                            <button class="bg-gray-300 px-3 py-[2.5px]">-</button>
-                            <input type="text" class="border-2 w-[40px] py-[1px] outline-none" name="" id="">
-                            <button class="bg-gray-300 px-3 py-[2.5px]">+</button>
+                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="decreasequantity(quantityProduct)">-</button>
+                            <input type="text" [value]="quantityProduct" class="text-center border-2 w-[40px] py-[1px] outline-none" name="" id="">
+                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="increasequantity(quantityProduct)">+</button>
                         </td>
                         <td>
                             <p class="font-bold">30.000 VNĐ</p>

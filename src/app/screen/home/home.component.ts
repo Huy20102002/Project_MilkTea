@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,15 @@ export class HomeComponent implements OnInit {
     { path: 'https://nhipsongvanphong.com/wp-content/uploads/2021/10/beautiful-milk-tea-background-download-beautiful-milk-tea-background-here-picture-45-sHhxeks8H.jpg' },
 
   ]
-  constructor() { }
+  dataProduct: any;
+  constructor(private ProductService: ProductService) { }
   ngOnInit(): void {
+    this.getproductHome();
   }
-
+  getproductHome() {
+    this.ProductService.getAll().subscribe(res => {
+      const { data } = res
+      this.dataProduct = data;
+    })
+  }
 }

@@ -53,6 +53,8 @@ import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.c
 import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
+import { InnerHtmlPipe } from './untils/pipes/inner-html.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -99,6 +101,7 @@ import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
     AddSlideComponent,
     EditSlideComponent,
     ConvertVietNamPipe,
+    InnerHtmlPipe,
 
   ],
   imports: [
@@ -112,7 +115,8 @@ import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
     EditorModule,
     SocialLoginModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

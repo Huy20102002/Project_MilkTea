@@ -1,14 +1,14 @@
 <div class="content container mx-auto mt-6 mb-6">
     <div class="product_details md:flex min-w-[1000px] justify-between mr-[6rem] border-b pb-6">
         <div class="product_dt_img">
-            <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png"
+            <img [src]="image"
                 class="max-w-[450px] rounded" alt="">
         </div>
         <div class="product_dt_content">
             <div class="title_product_dt">
-                <p class="text-[28px] font-semibold">Trà đào cam sả</p>
+                <p class="text-[28px] font-semibold">{{name}}</p>
                 <div class="price">
-                    <span class="text-[23px] font-semibold text-orange-500">{{45000|currency: "VND"}}</span>
+                    <span class="text-[23px] font-semibold text-orange-500">{{price|currency: "VND"}}</span>
                 </div>
             </div>
             <div class="size_product">
@@ -16,11 +16,11 @@
                    <div>
                     <p class="font-normal">Kích Thước</p>
                    </div>
-                   <div class="size_dt md:flex items-center">
-                       <ng-container *ngFor="let item of formSize;index as i">
-                        <div class="size_dt p-3 mr-5">
+                   <div class="size_dt grid md:grid-cols-3 gap-5 mt-3 pb-3 items-center">
+                       <ng-container *ngFor="let item of dataSize;index as i">
+                        <div class="size_dt ">
                             <label for="size{{i}}" class="{{valueColorSize === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold">
-                                {{textSize[i]}}
+                                {{item.name}} + {{item.price}} VND
                             </label>
                             <input type="radio" class="hidden" id="size{{i}}" name="size" (change)="selectedSize(item)" >
                         </div>
@@ -33,9 +33,9 @@
                     <p class="font-normal">Topping</p>
                 </div>
                 <div class="menu_topping grid md:grid-cols-2 grid-rows-1 gap-1 items-center mt-3">
-                    <ng-container *ngFor="let item of formTopping;index as i">
-                        <label for="topping{{i}}" class="{{valueColorTopping === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold">
-                            {{textTopping[i]}}
+                    <ng-container *ngFor="let item of dataTopping;index as i">
+                        <label for="topping{{i}}" class="{{valueColorTopping === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold w-[300px]">
+                            {{item.name }} + {{ item.price}} VND
                         </label>
                         <input type="radio" class="hidden" id="topping{{i}}" name="size" (change)="selectedTopping(item)">
                     </ng-container>  
@@ -45,10 +45,14 @@
                 <div class="quantity">
                     <p class="font-normal">Số lượng</p>
                 </div>
-                <input type="number" min="0" class="border outline-none w-[30px]">
+               <div class="mt-3">
+                <button class="bg-gray-300 px-3 py-[2.5px]" (click)="decreasequantity(quantityProduct)">-</button>
+                <input type="text" class="border-2 w-[40px] py-[1px] outline-none" [value]="quantityProduct" id="">
+                <button class="bg-gray-300 px-3 py-[2.5px]" (click)="increasequantity(quantityProduct)">+</button>
+               </div>
             </div>
             <div class="order mt-6 flex ">
-                <button class="bg-red-500 duration-300 px-5 py-2 text-white rounded md:w-full  mt-3">THÊM VÀO GIỎ HÀNG</button>
+                <button class="bg-red-500 duration-300 px-5 py-2 text-white rounded md:w-full  mt-3" (click)="addTocart()">THÊM VÀO GIỎ HÀNG</button>
                 &nbsp;
                 <button class="bg-orange-500 duration-300 px-6 py-2 text-white rounded md:w-full  mt-3 ">ĐẶT HÀNG NGAY</button>
             </div>
@@ -61,8 +65,7 @@
                         <p class="font-medium  md:text-[20px] text-[17px]">Thông tin</p>
                    </div>
                    <div class="content_info md:text-[18px] text-[15px] w-[99%]">
-                    Thức uống mang hương vị của nhãn, của sen, của trà Oolong đầy thanh mát. An lành, 
-                    thư thái và đậm đà chính là những gì The Coffee House mong muốn gửi trao đến bạn và gia đình.
+                    {{description}}
                    </div>
                </div>
                <div class="story">
