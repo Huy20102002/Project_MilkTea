@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/service/cart.service';
+import { LocalStorageService } from 'src/app/service/local-storage.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private CartService: CartService, private LocalStorageService: LocalStorageService, private ProductService: ProductService) { }
   quantityProduct: number = 0;
+  dataCart: any;
+  dataImage:any;
   ngOnInit(): void {
+    this.getCart();
   }
-
   increasequantity(quantity: any) {
     this.quantityProduct++;
   }
@@ -24,5 +29,13 @@ export class CartComponent implements OnInit {
       this.quantityProduct = 0;
     }
   }
-  
+  getCart() {
+    const cart = this.LocalStorageService.getLocalStorage("cart");
+    this.dataCart = cart;
+  }
+  sumProduct(){
+    const cart = this.LocalStorageService.getLocalStorage("cart");
+
+  }
+
 }
