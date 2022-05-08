@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/service/cart.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { ProductService } from 'src/app/service/product.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -11,31 +12,53 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private CartService: CartService, private LocalStorageService: LocalStorageService, private ProductService: ProductService) { }
+  constructor(private CartService: CartService, private LocalStorageService: LocalStorageService,
+    private ProductService: ProductService, private ToastrService: ToastrService) { }
   quantityProduct: number = 0;
   dataCart: any;
-  dataImage:any;
+  dataImage: any;
+
   ngOnInit(): void {
     this.getCart();
   }
-  increasequantity(quantity: any) {
-    this.quantityProduct++;
+  increasequantity(data: any) {
+    this.CartService.increaseQuantityCart(data, () => {
+      this.ToastrService.success("Tăng số lượng thành công");
+      const cart = this.LocalStorageService.getLocalStorage("cart");
+      this.dataCart = cart;
+    })
   }
-  decreasequantity(quantity: any) {
-    if (this.quantityProduct) {
-      this.quantityProduct--;
-
-    } else if (this.quantityProduct < 0) {
-      this.quantityProduct = 0;
-    }
+  decreasequantity(data: any) {
+    this.CartService.decreseQuantityCart(data, () => {
+      this.ToastrService.success("giảm số lượng thành công");
+      const cart = this.LocalStorageService.getLocalStorage("cart");
+      this.dataCart = cart;
+    })
   }
   getCart() {
     const cart = this.LocalStorageService.getLocalStorage("cart");
     this.dataCart = cart;
   }
-  sumProduct(){
-    const cart = this.LocalStorageService.getLocalStorage("cart");
-
+  removeCart(item: any) {
+    Swal.fire({
+      title: `Bạn có muốn xóa sản phẩm này ?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Xóa thành công!',
+          'sản phẩm của bạn đã xóa thành công ',
+          'success'
+        )
+        this.dataCart = this.CartService.removeCart(item);
+      }
+    })
   }
+
 
 }

@@ -14,7 +14,7 @@
                     <ng-container *ngFor="let item of dataCart">
                     <tr>
                         <td class="flex items-center">
-                            <button class="px-2"><i class="far fa-trash-alt text-[17px]"></i></button>
+                            <button class="px-2" (click)="removeCart(item)"><i class="far fa-trash-alt text-[17px]"></i></button>
                             <div class="img_Cart p-3 md:block hidden">
                                 <img [src]="item.image"
                                     class="w-[100px]" alt="">
@@ -23,7 +23,7 @@
                                 <p class="font-semibold">{{item.name}}</p>
                                 <div class="details_products">
                                     <p>Size: {{item.size_name}}</p>
-                                    <p>Topping: {{item.topping_name}}</p>
+                                    <p>Topping: {{item.topping_name ? item.topping_name : 'Không chọn'}}</p>
                                 </div>
                             </div>
                         </td>
@@ -31,9 +31,9 @@
                             <span class="font-bold"> {{item.price|currency:'VND'}}</span>
                         </td>
                         <td>
-                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="decreasequantity(quantityProduct)">-</button>
-                            <input type="text" [value]="item.quantity" class="text-center border-2 w-[40px] py-[1px] outline-none" name="" id="">
-                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="increasequantity(quantityProduct)">+</button>
+                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="decreasequantity(item)">-</button>
+                            <input type="text" [(ngModel)]="item.quantity" class="text-center border-2 w-[40px] py-[1px] outline-none" name="" id="">
+                            <button class="bg-gray-300 px-3 py-[2.5px]" (click)="increasequantity(item)">+</button>
                         </td>
                         <td>
                             <p class="font-bold">{{item.price*item.quantity|currency: "VND"}} </p>

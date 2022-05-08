@@ -55,7 +55,7 @@ import {AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
 import { InnerHtmlPipe } from './untils/pipes/inner-html.pipe';
 import { ToastrModule } from 'ngx-toastr';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -106,6 +106,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

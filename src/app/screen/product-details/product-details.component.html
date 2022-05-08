@@ -11,36 +11,38 @@
                     <span class="text-[23px] font-semibold text-orange-500">{{price|currency: "VND"}}</span>
                 </div>
             </div>
-            <div class="size_product">
-                <div class="size">
-                   <div>
-                    <p class="font-normal">Kích Thước</p>
-                   </div>
-                   <div class="size_dt grid md:grid-cols-3 gap-5 mt-3 pb-3 items-center">
-                       <ng-container *ngFor="let item of dataSize;index as i">
-                        <div class="size_dt ">
-                            <label for="size{{i}}" class="{{valueColorSize === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold">
-                                {{item.name}} + {{item.price}} VND
+            <form action="">
+                <div class="size_product">
+                    <div class="size">
+                       <div>
+                        <p class="font-normal">Kích Thước</p>
+                       </div>
+                       <div class="size_dt grid md:grid-cols-3 gap-5 mt-3 pb-3 items-center">
+                           <ng-container *ngFor="let item of dataSize;index as i">
+                            <div class="size_dt ">
+                                <label for="size{{i}}" class="{{valueColorSize === item ? 'bg-red-500 text-white' : ''}}  cursor-pointer border px-6 py-2 font-semibold">
+                                    {{item.name}} + {{item.price}} VND
+                                </label>
+                                <input type="radio"  class="hidden"   id="size{{i}}" name="size" (change)="selectedSize(item)" >
+                            </div>
+                           </ng-container>
+                       </div>
+                    </div>
+                </div>
+                <div class="topping">
+                    <div class="title_topping">
+                        <p class="font-normal">Topping</p>
+                    </div>
+                    <div class="menu_topping grid md:grid-cols-2 grid-rows-1 gap-1 items-center mt-3">
+                        <ng-container *ngFor="let item of dataTopping;index as i">
+                            <label for="topping{{i}}" class="{{valueColorTopping === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold w-[300px]">
+                                {{item.name }} + {{ item.price}} VND
                             </label>
-                            <input type="radio" class="hidden" id="size{{i}}" name="size" (change)="selectedSize(item)" >
-                        </div>
-                       </ng-container>
-                   </div>
+                            <input type="radio" class="hidden" id="topping{{i}}" name="size" (change)="selectedTopping(item)">
+                        </ng-container>  
+                    </div>
                 </div>
-            </div>
-            <div class="topping">
-                <div class="title_topping">
-                    <p class="font-normal">Topping</p>
-                </div>
-                <div class="menu_topping grid md:grid-cols-2 grid-rows-1 gap-1 items-center mt-3">
-                    <ng-container *ngFor="let item of dataTopping;index as i">
-                        <label for="topping{{i}}" class="{{valueColorTopping === item ? 'bg-red-500 text-white' : ''}} cursor-pointer border px-6 py-2 font-semibold w-[300px]">
-                            {{item.name }} + {{ item.price}} VND
-                        </label>
-                        <input type="radio" class="hidden" id="topping{{i}}" name="size" (change)="selectedTopping(item)">
-                    </ng-container>  
-                </div>
-            </div>
+            </form>
             <div class="quantity_product mt-3">
                 <div class="quantity">
                     <p class="font-normal">Số lượng</p>
