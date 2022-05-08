@@ -1,1 +1,133 @@
-<p>order-client works!</p>
+<div class="content mt-3 container mx-auto pb-6">
+    <div class="order md:flex">
+        <div class="info_payment md:w-[65%]">
+            <div class="title_payment flex">
+                <h2 class="text-gray-500 text-[18px] font-semibold">THÔNG TIN THANH TOÁN</h2>
+            </div>
+            <div class="form_payment">
+                <form action="">
+                    <div class="mb-3 md:flex">
+                        <div class="mb-3 w-full px-3 ">
+                            <label for="" class="font-semibold">Họ và tên*</label>
+                            <input type="text"
+                                class="py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                        </div>
+                        <div class="mb-3 w-full px-3 ">
+                            <label for="" class="font-semibold">Số điện thoại*</label>
+                            <input type="text"
+                                class="py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                        </div>
+                    </div>
+                    <div class="mb-3 w-full px-3 ">
+                        <label for="" class="font-semibold">Email*</label>
+                        <input type="text"
+                            class="py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                    </div>
+                    <div class="md:flex mb-3">
+                        <div class="mb-3 w-full px-3 ">
+                            <label for="" class="font-semibold">Tỉnh/Thành Phố*</label>
+                            <select [(ngModel)]="formkey.keyWord" (change)="changeTown()"
+                                [ngModelOptions]="{standalone: true}"
+                                class="bg-gray-50 py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                                <option value="">--Chọn tỉnh/Thành Phố--</option>
+                                <ng-container *ngFor="let item of dataDivison">
+                                    <option value="{{item.code}}">{{item.name}}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                        <div class="mb-3 w-full px-3 ">
+                            <label for="" class="font-semibold">Quận/Huyện*</label>
+                            <select [(ngModel)]="formkey.keyworddistric" (change)="changeDistrict()"
+                                [ngModelOptions]="{standalone: true}"
+                                class="bg-gray-50 py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                                <option value="">--Chọn Quận/Huyện--</option>
+                                <ng-container *ngFor="let item of dataTown">
+                                    <option value="{{item.code}}">{{item.name}}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                        <div class="mb-3 w-full px-3 ">
+                            <label for="" class="font-semibold">Xã/Phường*</label>
+                            <select name="" id=""
+                                class="bg-gray-50 py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                                <option value="">--Chọn Xã/Phường--</option>
+                                <ng-container *ngFor="let item of dataDistrict">
+                                    <option value="">{{item.name}}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3 w-full px-3 ">
+                        <label for="" class="font-semibold">Địa chỉ cụ thể*</label>
+                        <input type="text"
+                            class="py-1 shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow">
+                    </div>
+                </form>
+            </div>
+            <div class="additional">
+                <div class="title_additional">
+                    <h2 class="text-gray-500 text-[18px] font-semibold">THÔNG TIN BỔ SUNG ?</h2>
+                </div>
+                <div class="px-3">
+                    <textarea class="shadow w-full border focus:outline-none focus:border-orange-500 transition-shadow"
+                        id="" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="youroder md:w-[35%]">
+            <div class="title_order">
+                <h2 class="text-gray-500 text-[16px] font-semibold mt-[24px] pb-1">ĐƠN HÀNG CỦA BẠN</h2>
+            </div>
+            <div class="main_order border">
+                <table class="w-full text-left">
+                    <thead class="border-b-2 px-2 p-3">
+                        <tr>
+                            <th class="text-gray-500  px-3">Sản Phẩm</th>
+                            <th class="text-gray-500 px-2">Tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataOrder">
+                            <td class="flex px-2 py-2">
+                                <div>
+                                    <img [src]="item.image" class="w-[80px]" alt="">
+                                </div>
+                                <div class="px-3">
+                                    <p class="font-semibold">{{item.name}} x {{item.quantity}} </p>
+                                    <span class="text-[15px] font-normal">{{item.size_name}}</span>
+                                    <p class="text-[15px] font-normal"> {{item.topping_name}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="font-semibold">{{item.price |currency: "VND"}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2">
+                                <p class="font-semibold text-gray-500">Thành Tiền: </p>
+                            </td>
+                            <td>
+                                <p class="font-semibold right-0"> {{sum |currency:"VND"}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 font-semibold text-gray-500">Mã giảm giá:</td>
+                            <td>Không</td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 font-semibold text-gray-500">Phí ship:</td>
+                            <td>30.000đ</td>
+                        </tr>
+                        <tr>
+                            <td class="px-2 py-2 font-semibold text-gray-500">Tổng tiền:</td>
+                            <td>
+                                <p class="font-semibold right-0"> {{sum |currency:"VND"}}</p>
+                            </td>
+                        </tr>
+                    </tbody>                
+                </table>
+                <button class="bg-orange-500 text-white w-full px-2 py-1  mt-3">Thanh Toán Ngay</button>
+            </div>
+        </div>
+    </div>
+</div>

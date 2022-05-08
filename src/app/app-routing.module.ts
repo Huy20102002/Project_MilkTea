@@ -32,6 +32,7 @@ import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-
 import { ToppingEditComponent } from './screen/admin/topping/topping-edit/topping-edit.component';
 import { AddSlideComponent } from './screen/admin/slide/add-slide/add-slide.component';
 import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.component';
+import {OrderClientComponent} from './screen/order-client/order-client.component'
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -53,6 +54,9 @@ const routes: Routes = [
       },
       {
         path:"giohang",component: CartComponent
+      },
+      {
+        path: "giohang/thanhtoan",component: OrderClientComponent
       },
       {
         path: "canhan",component:ProfileComponent

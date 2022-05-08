@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/service/cart.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class CartComponent implements OnInit {
 
   constructor(private CartService: CartService, private LocalStorageService: LocalStorageService,
-    private ProductService: ProductService, private ToastrService: ToastrService) { }
+    private ProductService: ProductService, private ToastrService: ToastrService,private Router:Router) { }
   quantityProduct: number = 0;
   dataCart: any;
   dataImage: any;
@@ -75,6 +76,8 @@ export class CartComponent implements OnInit {
     })
 
   }
-
+  buttonOrder(){
+    this.Router.navigate(['/giohang/thanhtoan'])
+  }
 
 }

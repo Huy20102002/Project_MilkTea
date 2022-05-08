@@ -15,6 +15,7 @@ export class CartService implements OnInit{
     }
   }
   addToCart(newProduct: any, next: any) {
+    this.cart = this.localStorageService.getLocalStorage("cart");
     const existProduct = this.cart.find((item: any) => item.id_product === newProduct.id_product && item.id_topping === newProduct.id_topping && item.id_size === newProduct.id_size);
     if (!existProduct) {
       this.cart.push(newProduct);

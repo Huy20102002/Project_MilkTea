@@ -10,6 +10,7 @@ export const environment = {
   api_size: `${port}/size`,
   api_topping: `${port}/topping`,
   api_slide: `${port}/slide`,
+  api_divison: `https://provinces.open-api.vn/api`,
   GOOGLE_CLIENT_ID: "442140625921-2f3r7qj6i050m8khhp8u53a3ncc4hpj7.apps.googleusercontent.com",
   firebaseConfig : {
     apiKey: "AIzaSyD8Ftq85G42EQMmuCA4QAWEfCRXz-TUc_Q",
