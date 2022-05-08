@@ -25,12 +25,15 @@ export class CartService implements OnInit{
     next();
   }
   increaseQuantityCart(Product: any, next: any) {
+    this.cart = this.localStorageService.getLocalStorage("cart");
     const increasequantity = this.cart.find((item: any) => item.id_product === Product.id_product && item.id_topping === Product.id_topping && item.id_size === Product.id_size);
     increasequantity.quantity++;
+    increasequantity.sumprice = increasequantity.price * increasequantity.quantity;
     this.localStorageService.setLocalStorage("cart", this.cart);
     next();
   }
   decreseQuantityCart(Product: any, next: any) {
+    this.cart = this.localStorageService.getLocalStorage("cart");
     const currenProduct = this.cart.find((item: any) => item.id_product === Product.id_product && item.id_topping === Product.id_topping && item.id_size === Product.id_size);
     if (currenProduct.quantity > 0) {
       currenProduct.quantity--;
@@ -41,9 +44,11 @@ export class CartService implements OnInit{
         this.cart = this.cart.filter((item: any) => item.id_product != Product.id_product && item.id_topping != Product.id_topping && item.id_size != Product.id_size)
       }
     }
+    currenProduct.sumprice = currenProduct.price * currenProduct.quantity;
     this.localStorageService.setLocalStorage("cart", this.cart);
     next();
   }
+
   removeCart(item:any){
     this.cart = this.cart.filter((value: any) => value.id_product != item.id_product || value.id_topping != item.id_topping || value.id_size != item.id_size);
     this.localStorageService.setLocalStorage("cart",  this.cart);
@@ -53,4 +58,5 @@ export class CartService implements OnInit{
     }
     return this.cart;
   }
+  
 }

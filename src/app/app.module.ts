@@ -56,6 +56,7 @@ import { ConvertVietNamPipe } from './untils/pipes/convert-viet-nam.pipe';
 import { InnerHtmlPipe } from './untils/pipes/inner-html.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderClientComponent } from './screen/order-client/order-client.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditSlideComponent,
     ConvertVietNamPipe,
     InnerHtmlPipe,
+    OrderClientComponent,
 
   ],
   imports: [

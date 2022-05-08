@@ -32,14 +32,16 @@
                         </td>
                         <td>
                             <button class="bg-gray-300 px-3 py-[2.5px]" (click)="decreasequantity(item)">-</button>
-                            <input type="text" [(ngModel)]="item.quantity" class="text-center border-2 w-[40px] py-[1px] outline-none" name="" id="">
+                            <input type="text" disabled [(ngModel)]="item.quantity" class="text-center border-2 w-[40px] py-[1px] outline-none" name="" id="">
                             <button class="bg-gray-300 px-3 py-[2.5px]" (click)="increasequantity(item)">+</button>
                         </td>
                         <td>
-                            <p class="font-bold">{{item.price*item.quantity|currency: "VND"}} </p>
+                            <p class="font-bold">{{item.sumprice|currency: "VND"}} </p>
+        
                         </td>
                     </tr>
                 </ng-container>
+        
                 </tbody>
             </table>
         </div>
@@ -52,11 +54,11 @@
                     <tbody>
                         <tr class="border-b">
                             <td>Tạm Tính</td>
-                            <td>30000</td>
+                            <td>{{sumpriceCart|currency:"VND"}}</td>
                         </tr>
                         <tr class="border-b">
                             <td>Tổng</td>
-                            <td>30000</td>
+                            <td>{{sumpriceCart|currency:"VND"}}</td>
                         </tr>
                     </tbody>
                 </table>

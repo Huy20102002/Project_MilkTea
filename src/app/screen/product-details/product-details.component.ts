@@ -42,6 +42,7 @@ export class ProductDetailsComponent implements OnInit {
     id_topping: '',
     quantity: '',
     id_user: '',
+    sumprice:''
   }
   ngOnInit(): void {
     this.getProduct();
@@ -76,6 +77,7 @@ export class ProductDetailsComponent implements OnInit {
   addTocart() {
     //  xử lý tiền size.
     // let id_toppings = this.valueColorTopping.id ? 0 : this.valueColorTopping.id;
+    // price topping
     let sumProduct = (+this.priceTopping + +this.priceSize) + +this.dataProduct.price;
     this.formCart.id_product = this.dataProduct.id;
     this.formCart.name = this.name;
@@ -86,7 +88,9 @@ export class ProductDetailsComponent implements OnInit {
     this.formCart.id_topping = this.id_toppings;
     this.formCart.topping_name = this.nametopping;
     this.formCart.quantity = this.quantityProduct;
+    this.formCart.sumprice = this.quantityProduct * sumProduct;
     this.formCart.id_user = 1;
+    
     const newProduct = { ...this.formCart };
     this.CartService.addToCart(newProduct, () => {
       this.Toastr.success('Đặt Hàng Thành Công');

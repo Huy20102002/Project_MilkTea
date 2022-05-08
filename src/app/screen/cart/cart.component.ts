@@ -17,15 +17,26 @@ export class CartComponent implements OnInit {
   quantityProduct: number = 0;
   dataCart: any;
   dataImage: any;
-
+  sumpriceCart: number = 0;
   ngOnInit(): void {
     this.getCart();
+    this.sumPriceCart();
+  }
+  sumPriceCart() {
+    // const dataCart = this.localStorageService.getLocalStorage("cart");
+    let sum = 0;
+    this.dataCart.forEach((element: any) => {
+      sum += element.sumprice;
+    });
+    return sum;
   }
   increasequantity(data: any) {
     this.CartService.increaseQuantityCart(data, () => {
       this.ToastrService.success("Tăng số lượng thành công");
       const cart = this.LocalStorageService.getLocalStorage("cart");
       this.dataCart = cart;
+      this.sumpriceCart = this.sumPriceCart();
+
     })
   }
   decreasequantity(data: any) {
@@ -33,11 +44,14 @@ export class CartComponent implements OnInit {
       this.ToastrService.success("giảm số lượng thành công");
       const cart = this.LocalStorageService.getLocalStorage("cart");
       this.dataCart = cart;
+      this.sumpriceCart = this.sumPriceCart();
     })
+
   }
   getCart() {
     const cart = this.LocalStorageService.getLocalStorage("cart");
     this.dataCart = cart;
+    this.sumpriceCart = this.sumPriceCart();
   }
   removeCart(item: any) {
     Swal.fire({
@@ -56,8 +70,10 @@ export class CartComponent implements OnInit {
           'success'
         )
         this.dataCart = this.CartService.removeCart(item);
+        this.sumpriceCart = this.sumPriceCart();
       }
     })
+
   }
 
 
