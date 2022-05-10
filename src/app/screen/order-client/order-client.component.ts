@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from 'src/app/service/cart.service';
 import { DivisionService } from 'src/app/service/division.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
+import { OrderService } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-order-client',
@@ -11,15 +13,46 @@ import { LocalStorageService } from 'src/app/service/local-storage.service';
 })
 export class OrderClientComponent implements OnInit {
 
-  constructor(private divisonService: DivisionService,private CartService:CartService,private LocalStorage:LocalStorageService) { }
+  constructor(private divisonService: DivisionService,
+    private CartService: CartService, private LocalStorage: LocalStorageService, private orderService: OrderService) { }
   dataDivison: any;
   dataTown: any;
   dataDistrict: any;
   CodeTown: any;
-  dataOrder:any;
-  sum:number=0;
+  dataOrder: any;
+  sum: number = 0;
+  id_order: any;
   // keyworddistric:any;
   // keyWord:any;
+  formOrder: FormGroup = new FormGroup({
+    name: new FormControl('', [
+      Validators.required
+    ]),
+    phone: new FormControl(''),
+    email: new FormControl(''),
+    province: new FormControl(''),
+    district: new FormControl(''),
+    wards: new FormControl(''),
+    address: new FormControl(''),
+    sumprice: new FormControl(''),
+    shipping: new FormControl(''),
+    voucher: new FormControl(''),
+    additional: new FormControl(''),
+  });
+  formcart: any = {
+    id_order: '',
+    id_product: '',
+    name: '',
+    price: '',
+    image: '',
+    id_size: '',
+    size_name: '',
+    id_topping: '',
+    topping_name: '',
+    quantity: 0,
+    sumprice: '',
+    id_user: ''
+  }
   formkey = {
     keyworddistric: '',
     keyWord: ''
@@ -30,11 +63,11 @@ export class OrderClientComponent implements OnInit {
     this.getOrder();
     this.getSum();
   }
-  getOrder(){
-    const data= this.LocalStorage.getLocalStorage("cart");
+  getOrder() {
+    const data = this.LocalStorage.getLocalStorage("cart");
     this.dataOrder = data;
   }
-  getSum(){
+  getSum() {
     this.sum = this.sumPriceCart();
   }
   sumPriceCart() {
@@ -67,6 +100,39 @@ export class OrderClientComponent implements OnInit {
   }
   changeDistrict() {
     this.getDistrict(this.formkey.keyworddistric);
+  }
+  addOrder() {
+    let id = 0;
+    const cartlist = this.LocalStorage.getLocalStorage("cart");
+    this.formOrder.value.sumprice = this.sumPriceCart();
+    this.formOrder.value.shipping = 0;
+    this.formOrder.value.voucher = 0;
+    this.orderService.addOrder(this.formOrder.value).subscribe(res => {
+      const { response } = res;
+      this.id_order = response.id;
+      cartlist.forEach((cart: any) => {
+        this.orderService.addCart({
+          id_order: this.id_order,
+          id_product: cart.id_product,
+          name: cart.name,
+          price: cart.price,
+          image: cart.image,
+          id_size: cart.id_size,
+          size_name: cart.size_name,
+          id_topping: cart.id_topping,
+          topping_name: cart.topping_name,
+          quantity: cart.quantity,
+          sumprice: cart.sumprice,
+          id_user: cart.id_user
+        }).subscribe(res => {
+
+        })
+      })
+    })
+
+
+
+
   }
 
 

@@ -8,8 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class HomelayoutComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  ngOnInit(): void {
  
+  ngOnInit(): void {
+
   }
 
 

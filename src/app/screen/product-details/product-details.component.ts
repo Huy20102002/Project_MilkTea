@@ -39,7 +39,9 @@ export class ProductDetailsComponent implements OnInit {
     price: '',
     image: '',
     id_size: '',
+    size_name: '',
     id_topping: '',
+    topping_name:'',
     quantity: '',
     id_user: '',
     sumprice:''
@@ -90,7 +92,6 @@ export class ProductDetailsComponent implements OnInit {
     this.formCart.quantity = this.quantityProduct;
     this.formCart.sumprice = this.quantityProduct * sumProduct;
     this.formCart.id_user = 1;
-    
     const newProduct = { ...this.formCart };
     this.CartService.addToCart(newProduct, () => {
       this.Toastr.success('Đặt Hàng Thành Công');
@@ -109,9 +110,7 @@ export class ProductDetailsComponent implements OnInit {
         this.description = value.description.replace(/\"/g, "");
       });
     });
-
   }
-
   increasequantity(quantity: any) {
     this.quantityProduct++;
   }

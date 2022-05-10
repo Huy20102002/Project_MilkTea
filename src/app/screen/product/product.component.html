@@ -6,11 +6,8 @@
             </div>
             <div class="main_cate ">
                 <div class="cate_details ">
-                    <ul class="">
-                        <li class="p-3 border-b hover:bg-orange-300 cursor-pointer"><a href="" class="font-light ">Trà sữa</a></li>
-                        <li class="p-3 border-b hover:bg-orange-300 cursor-pointer"><a href="" class="font-light">Cà Phê</a></li>
-                        <li class="p-3 border-b hover:bg-orange-300 cursor-pointer"><a href="" class="font-light">Sữa Chua</a></li>
-                        <li class="p-3 border-b hover:bg-orange-300 cursor-pointer"><a href="" class="font-light">Khác</a></li>
+                    <ul class="" *ngFor="let item of dataCate">
+                        <li class="p-3 border-b hover:bg-orange-300 duration-300 cursor-pointer"><a href="" class="font-light ">{{item.name}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,7 +75,10 @@
         </div>
     </div>
      <div class="product_list">
-         <div class="title ml-5 font-semibold flex justify-end mb-3 outline-none">
+         <div class="title ml-5 font-semibold flex justify-between mb-3 outline-none">
+             <div class="title_product">
+                 <p class="text-[25px]">Tất cả sản phẩm</p>
+             </div>
              <div class="filter_product">
                 sắp xếp theo 
                 <select name="" class="border shadow-lg" id="">
@@ -98,7 +98,7 @@
                     <div class="milk_text text-center bg-gray-100 py-4 ">
                         <p class="font-semibold">{{item.name}}</p>
                         <p>{{item.price| currency: "VND"}}</p>
-                        <button class="bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
+                        <button class=" bg-orange-300 px-4 py-1 mt-3 hover:outline hover:outline-offset-1 hover:outline-orange-300 hover:bg-white translate-all">ĐẶT HÀNG</button>
                     </div>
                 </div>
             </ng-container>

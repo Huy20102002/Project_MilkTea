@@ -1,20 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService implements OnInit{
+export class CartService {
   cart: Array<any> = [];
   shipping: any;
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private localStorageService: LocalStorageService,private http:HttpClient) {
+
   }
-  ngOnInit(): void {
-    if (this.localStorageService.getLocalStorage("cart")) {
-      this.cart = this.localStorageService.getLocalStorage("cart");
-    }
-  }
+
   addToCart(newProduct: any, next: any) {
+    this.localStorageService.setLocalStorage("cart",this.cart);
     this.cart = this.localStorageService.getLocalStorage("cart");
     const existProduct = this.cart.find((item: any) => item.id_product === newProduct.id_product && item.id_topping === newProduct.id_topping && item.id_size === newProduct.id_size);
     if (!existProduct) {
@@ -54,10 +54,9 @@ export class CartService implements OnInit{
     this.cart = this.cart.filter((value: any) => value.id_product != item.id_product || value.id_topping != item.id_topping || value.id_size != item.id_size);
     this.localStorageService.setLocalStorage("cart",  this.cart);
     this.cart = this.cart;
-    if(this.cart.length <1){
-      localStorage.removeItem("cart");
-    }
+  
     return this.cart;
   }
+
   
 }
