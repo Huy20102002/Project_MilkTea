@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/service/cart.service';
 import { DivisionService } from 'src/app/service/division.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
@@ -13,7 +14,7 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class OrderClientComponent implements OnInit {
 
-  constructor(private divisonService: DivisionService,
+  constructor(private divisonService: DivisionService,private Route:Router,
     private CartService: CartService, private LocalStorage: LocalStorageService, private orderService: OrderService) { }
   dataDivison: any;
   dataTown: any;
@@ -125,7 +126,7 @@ export class OrderClientComponent implements OnInit {
           sumprice: cart.sumprice,
           id_user: cart.id_user
         }).subscribe(res => {
-
+           this.Route.navigate(['/thanhcong']);
         })
       })
     })

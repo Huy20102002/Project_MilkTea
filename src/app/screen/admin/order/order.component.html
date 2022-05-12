@@ -32,19 +32,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="px-6 py-4">s</td>
-                    <td class="px-6 py-4">s</td>
-                    <td class="px-6 py-4 "><span class="bg-green-100 text-green-800 font-semibold px-3 py-1 rounded">Đang giao hàng</span></td>
-                    <td class="px-6 py-4">s</td>
-                    <td class="px-6 py-4">s</td>
+                <tr *ngFor="let item of dataOrder | paginate: { itemsPerPage: 10, currentPage: p };index as i">
+                    <td class="px-6 py-4">{{i+1}}</td>
+                    <td class="px-6 py-4">{{item.name}}</td>
+                    <td class="px-6 py-4">{{item.sumprice |currency:"VND"}}</td>
+                    <td class="px-6 py-4 "><span class="bg-green-100 text-green-800 font-semibold px-3 py-1 rounded">{{item.status|shipping}}</span></td>
+                    <td class="px-6 py-4">{{item.created_at |date:'short'}}</td>
                     <td class="px-6 py-4">
-                       
-                        <a routerLink="/admin/donhang/2/chitiet" 
+                        <a routerLink="/admin/donhang/{{item.id}}/chitiet" 
                             class="cursor-pointer font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Chi tiết</a>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <pagination-controls (pageChange)="p = $event" class="my-pagination "></pagination-controls>
     </div>
 </div>

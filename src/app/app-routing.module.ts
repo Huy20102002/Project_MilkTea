@@ -33,6 +33,8 @@ import { ToppingEditComponent } from './screen/admin/topping/topping-edit/toppin
 import { AddSlideComponent } from './screen/admin/slide/add-slide/add-slide.component';
 import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.component';
 import {OrderClientComponent} from './screen/order-client/order-client.component'
+import { CategoryclientComponent } from './screen/categoryclient/categoryclient.component';
+import { OrderSucessComponent } from './screen/order-sucess/order-sucess.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -42,7 +44,9 @@ const routes: Routes = [
       {
         path: "sanpham",component: ProductComponent
       },
-      
+      {
+        path: "danhmuc/:id",component: CategoryclientComponent
+      },
       {
         path: "sanpham/chitiet/:id",component: ProductDetailsComponent
       },
@@ -57,6 +61,9 @@ const routes: Routes = [
       },
       {
         path: "giohang/thanhtoan",component: OrderClientComponent
+      },
+      {
+        path: "thanhcong",component: OrderSucessComponent
       },
       {
         path: "canhan",component:ProfileComponent

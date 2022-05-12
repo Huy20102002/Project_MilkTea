@@ -51,6 +51,7 @@ export class CartService {
   }
 
   removeCart(item:any){
+    this.cart = this.localStorageService.getLocalStorage("cart");
     this.cart = this.cart.filter((value: any) => value.id_product != item.id_product || value.id_topping != item.id_topping || value.id_size != item.id_size);
     this.localStorageService.setLocalStorage("cart",  this.cart);
     this.cart = this.cart;

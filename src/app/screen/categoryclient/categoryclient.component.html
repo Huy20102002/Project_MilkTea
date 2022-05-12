@@ -6,7 +6,7 @@
             </div>
             <div class="main_cate ">
                 <div class="cate_details ">
-
+                  
                     <ul class="" >
                         <li class="p-3 border-b hover:bg-orange-300 duration-300 cursor-pointer"><a routerLink="/sanpham"class=" font-light ">Tất cả</a></li>
                         <ng-container *ngFor="let item of dataCate">
@@ -23,7 +23,7 @@
            <div>
                 <div class="menu_favorite_product md:flex  md:justify-between w-5/6 mt-3 border-b-2 pb-3">
                     <div class="img_favorite_product">
-                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" class="w-14 " alt="">
+                    <img src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png" class="w-14" alt="">
                     </div>
                     <div class="text_fvt_product">
                         <p class="text-orange-400 hover:text-black duration-300"><a href="">TRÀ Ô LONG ĐÀO</a></p>
@@ -79,13 +79,13 @@
         </div>
     </div>
      <div class="product_list">
-         <div class="title ml-5 font-semibold flex justify-between mb-3 ">
+         <div class="title ml-5 font-semibold  md:grid md:grid-cols-2 md:gap-[160px]  mb-3 outline-none">
              <div class="title_product">
                  <p class="text-[25px]">Tất cả sản phẩm</p>
              </div>
              <div class="filter_product">
                 sắp xếp theo 
-                <select name="" class="border shadow-lg outline-none" id="">
+                <select name="" class="border shadow-lg" id="">
                     <option value="">Mặc định</option>
                     <option value="">Tăng dần theo giá tiền</option>
                     <option value="">Giảm dần theo giá tiền</option>
@@ -97,7 +97,7 @@
             <ng-container *ngFor="let item of dataProduct">
                 <div class="product_milk mx-4 border border-gray-200 ">
                     <div class="milk_img">
-                        <a routerLink="/sanpham/chitiet/{{item.link_sp}}"><img [src]="item.image" class="md:w-[262px] " alt=""></a>
+                        <a routerLink="/sanpham/chitiet/{{item.link_sp}}"><img [src]="item.image" class="w-[262px]" alt=""></a>
                     </div>
                     <div class="milk_text text-center bg-gray-100 py-4 ">
                         <p class="font-semibold">{{item.name}}</p>

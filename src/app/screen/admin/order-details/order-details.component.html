@@ -10,12 +10,18 @@
                     sách đơn hàng</a>
             </div>
         </div>
-        <div class="main_order ">
+        <div class="main_order">
             <div>
-                <div class="details_order border m-3 bg-white rounded p-3">
+                <div class="details_order border m-3 bg-white rounded p-3 ">
+                    <div class="confirm_order pb-3">
+                        <button (click)="changeStatus(daxacnhan)" class="bg-blue-600 rounded px-2 hover:bg-blue-800 duration-300 py-1 mr-2 mt-2 text-white">Đã xác nhận</button>
+                        <button (click)="changeStatus(danggiaohang)" class="bg-blue-600 rounded px-2 hover:bg-blue-800 duration-300 py-1 mr-2 mt-2 text-white">Đang giao hàng</button>
+                        <button (click)="changeStatus(dagiaohang)" class="bg-blue-600 rounded px-2 hover:bg-blue-800 duration-300 py-1 mr-2 mt-2 text-white">Đã giao hàng</button>
+                        <button (click)="changeStatus(dahuy)" class="bg-blue-600 rounded px-2 hover:bg-blue-800 duration-300 py-1 mr-2 mt-2 text-white">Đã hủy</button>
+                    </div>
                     <div class="nofication">
                     <p>
-                        Đơn hàng đã đặt lúc <b>10:30 phút ngày 20/10/2022</b> Hiện tại <b>đã bị hủy</b>
+                        Đơn hàng đã đặt lúc <b>{{dataInfo.created_at|date:'mediumTime'}}  phút ngày {{dataInfo.created_at|date:'shortDate'}} </b> Hiện tại là:<b>{{dataInfo.status|shipping}}</b>
                     </p>
                     </div>
                     <div class="main_orderdt ">
@@ -34,23 +40,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     <tr>
+                                     <tr *ngFor="let item of dataOrderDt">
                                          <td>1</td>
                                          <td class="flex">
                                              <div>
-                                                 <img class="w-24" src="https://tocotocotea.com/wp-content/uploads/2022/04/tra%CC%80-xoa%CC%80i-bu%CC%9Bo%CC%9B%CC%89i-ho%CC%82%CC%80ng-kem-pho%CC%82-mai.png"  alt="">
+                                                 <img class="md:w-24 md:block hidden" [src]="item.image"  alt="">
                                              </div>
                                              <div class="ml-2">
-                                                 <p>Trà đào cam sả</p>
-                                                 <p><b>Kích thước:</b> nhỏ</p>
-                                                 <p><b>Topping:</b>Trân châu trắng</p>
+                                                 <p>{{item.name}}</p>
+                                                 <p><b>Kích thước:</b> {{item.size_name}}</p>
+                                                 <p><b>Topping:</b> {{item.topping_name}}</p>
                                              </div>
                                          </td>
                                          <td>
-                                             20.000 VNĐ
+                                            {{item.price |currency:"VND"}}
                                          </td>
-                                         <td>2</td>
-                                         <td>40.000 VND</td>
+                                         <td>{{item.quantity}}</td>
+                                         <td>{{item.sumprice|currency:"VND"}}</td>
                                      </tr>
                                 </tbody>
                             </table>
@@ -62,15 +68,16 @@
                                     <table class="w-full">
                                         <tr >
                                             <td><b>Tiền tạm tính:</b></td>
-                                            <td>40.000 VNĐ</td>
+                                            <td>{{dataInfo['sumprice']|currency:"VND"}}</td>
                                         </tr>
                                         <tr >
                                             <td><b>Giảm giá:</b></td>
-                                            <td>0 VNĐ</td>
+                                            <td>{{dataInfo['shipping']}}</td>
                                         </tr>
                                         <tr >
                                             <td><b>Tổng tiền:</b></td>
-                                            <td>40.000 VNĐ</td>
+                                            <td>{{dataInfo['sumprice']|currency:"VND"}}</td>
+
                                         </tr>
                                     </table>
                                 </div>
@@ -83,23 +90,24 @@
                                     <table class="w-full">
                                         <tr >
                                             <td><b>Họ tên:</b></td>
-                                            <td>Bùi Tiến Huy</td>
+                                            <td>{{dataInfo['name']}}</td>
                                         </tr>
                                         <tr >
                                             <td><b>Địa chỉ:</b></td>
-                                            <td>Hiệp hòa quảng yên</td>
+                                            <td>{{dataInfo['address']}}</td>
                                         </tr>
                                         <tr >
                                             <td><b>Email:</b></td>
-                                            <td>bhuy20102002@gmail.com</td>
+                                            <td>{{dataInfo['email']}}</td>
+
                                         </tr>
                                         <tr >
                                             <td><b>Thời gian đặt:</b></td>
-                                            <td>20:00h ngày 20/10/2022</td>
+                                            <td>{{dataInfo['created_at'] |date: 'short'}}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Ghi chú:</b></td>
-                                            <td>Không</td>
+                                            <td>{{dataInfo['additional']}}</td>
                                         </tr>
                                     </table>
                                 </div>

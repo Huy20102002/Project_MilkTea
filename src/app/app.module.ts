@@ -57,6 +57,10 @@ import { InnerHtmlPipe } from './untils/pipes/inner-html.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderClientComponent } from './screen/order-client/order-client.component';
+import { CategoryclientComponent } from './screen/categoryclient/categoryclient.component';
+import { OrderSucessComponent } from './screen/order-sucess/order-sucess.component';
+import { ShippingPipe } from './untils/pipes/shipping.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -104,6 +108,9 @@ import { OrderClientComponent } from './screen/order-client/order-client.compone
     ConvertVietNamPipe,
     InnerHtmlPipe,
     OrderClientComponent,
+    CategoryclientComponent,
+    OrderSucessComponent,
+    ShippingPipe,
 
   ],
   imports: [
@@ -119,7 +126,9 @@ import { OrderClientComponent } from './screen/order-client/order-client.compone
     SocialLoginModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
+    
   ],
   providers: [
     {
