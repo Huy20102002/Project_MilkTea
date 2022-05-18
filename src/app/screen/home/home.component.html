@@ -1,12 +1,14 @@
 <div class="content pb-5">
     <div class="banner container m-auto">
-        <carousel [images]="images" [autoplay]="true"  [cellsToShow]="1" [height]="550">
+        <carousel [images]="imagess" [autoplay]="true"  [cellsToShow]="1" [height]="550">
         </carousel>
     </div>
     <div class="main_content bg-content">
+    {{images}}
+
         <div class="container m-auto">
             <div class="title_content">
-                <p class="text-center text-orange-400 italic text-2xl pt-3">Milk Tea Menu</p>
+                <p class="text-center text-orange-400 italic text-2xl pt-3">TooCha Menu</p>
                 <h2 class="text-center font-semibold text-3xl mt-3">Sản Phẩm Nổi Bật</h2>
             </div>
             <div class="main_content">
@@ -14,7 +16,7 @@
                   <ng-container *ngFor="let item of dataProduct">
                     <div class="product_milk mx-4 border border-gray-200 ">
                         <div class="milk_img">
-                          <a routerLink="/sanpham/chitiet/{{item.link_sp}}"><img [src]="item.image" alt=""></a>
+                          <a (click)="loading()" routerLink="/sanpham/chitiet/{{item.link_sp}}"><img [src]="item.image" alt=""></a>
                         </div>
                         <div class="milk_text text-center bg-gray-100 py-4">
                             <a routerLink="/sanpham/chitiet/{{item.link_sp}}"><p class="font-semibold">{{item.name}}</p></a>
@@ -33,7 +35,7 @@
         <div class="promotion container m-auto">
             <div class="title_promotion">
                 <p class="text-center text-orange-400 italic text-2xl pt-3">Tin tức và khuyến mãi</p>
-                <h2 class="text-center font-semibold text-3xl mt-3">Khám phá Milktea nhận ngay khuyến mãi</h2>
+                <h2 class="text-center font-semibold text-3xl mt-3">Khám phá TooCha nhận ngay khuyến mãi</h2>
             </div>
         </div>
     </div>

@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 export class OrderService {
 
   constructor(private http:HttpClient) { }
-  getOrder():Observable<any>{
-    return this.http.get<any>(`${environment.api_order}`);
+  getOrder(keyword:string= ""):Observable<any>{
+    return this.http.get<any>(`${environment.api_order}?q=${keyword}`);
   }
   getOrderId(id:any):Observable<any>{
     return this.http.get<any>(`${environment.api_order}/${id}`);

@@ -35,6 +35,7 @@ import { EditSlideComponent } from './screen/admin/slide/edit-slide/edit-slide.c
 import {OrderClientComponent} from './screen/order-client/order-client.component'
 import { CategoryclientComponent } from './screen/categoryclient/categoryclient.component';
 import { OrderSucessComponent } from './screen/order-sucess/order-sucess.component';
+import { AuthGuard } from './service/AuthGuard';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -77,9 +78,9 @@ const routes: Routes = [
     path: "account-register",component: RegisterComponent
   },
   {
-    path: "admin",component:AdminlayoutComponent,children: [
+    path: "admin",component:AdminlayoutComponent,canActivate:[AuthGuard],children: [
       {
-        path: "",component: DashboardComponent
+        path: "",component: DashboardComponent,canActivate:[AuthGuard]
       },
       {
         path: "donhang",component: OrderComponent

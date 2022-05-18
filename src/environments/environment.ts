@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 const port = 'http://localhost:8000/api';
 export const environment = {
-  production: false,
+  production: true,
   api_category: `${port}/category`,
   api_product: `${port}/product`,
   api_user: `${port}/auth`,
@@ -12,6 +12,7 @@ export const environment = {
   api_slide: `${port}/slide`,
   api_order: `${port}/orders`,
   api_carts: `${port}/carts`,
+  api_comment: `${port}/comments`,
   api_divison: `https://provinces.open-api.vn/api`,
   GOOGLE_CLIENT_ID: "442140625921-2f3r7qj6i050m8khhp8u53a3ncc4hpj7.apps.googleusercontent.com",
   firebaseConfig : {

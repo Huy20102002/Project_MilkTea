@@ -6,6 +6,7 @@ import { CartService } from 'src/app/service/cart.service';
 import { DivisionService } from 'src/app/service/division.service';
 import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { OrderService } from 'src/app/service/order.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-client',
@@ -14,7 +15,7 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class OrderClientComponent implements OnInit {
 
-  constructor(private divisonService: DivisionService,private Route:Router,
+  constructor(private divisonService: DivisionService, private Route: Router,
     private CartService: CartService, private LocalStorage: LocalStorageService, private orderService: OrderService) { }
   dataDivison: any;
   dataTown: any;
@@ -126,10 +127,17 @@ export class OrderClientComponent implements OnInit {
           sumprice: cart.sumprice,
           id_user: cart.id_user
         }).subscribe(res => {
-           this.Route.navigate(['/thanhcong']);
+          this.Route.navigate(['/thanhcong']);
+          this.LocalStorage.setLocalStorage("cart",[]);
         })
       })
-    })
+    },(error => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng nhập đầy đủ các trường bắt buộc',
+        text: 'Vui lòng thử lại !',
+      })
+    }))
 
 
 

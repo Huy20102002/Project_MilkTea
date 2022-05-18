@@ -12,9 +12,12 @@ export class ProductComponent implements OnInit {
   constructor(private ProductService: ProductService,private CategoryService:CategoriesService) { }
   dataProduct: any;
   dataCate:any;
+  iconloading:any;
   ngOnInit(): void {
     this.getProduct();
     this.getCategory();
+    this.iconloading = document.getElementById("loading");
+    this.loading();
   }
   getProduct() {
     this.ProductService.getAll().subscribe(res => {
@@ -28,5 +31,19 @@ export class ProductComponent implements OnInit {
       this.dataCate =data;
     })
   }
+
+
+showloading(){
+  this.iconloading.style.display ="block";
+}
+hideloading(){
+  this.iconloading.style.display= "none";
+}
+loading(){
+  this.showloading();
+  setTimeout(()=>{
+    this.hideloading();
+  },800)
+}
 
 }

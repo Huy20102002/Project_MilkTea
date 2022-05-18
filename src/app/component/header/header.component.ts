@@ -10,12 +10,26 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   list: any;
-
+  iconloading:any;
   ngOnInit(): void {
     window.addEventListener("scroll", function () {
       const header = document.querySelector('.navs');
       header?.classList.toggle("sticky", this.window.scrollY > 0);
     });
+    this.iconloading = document.getElementById("loading");
+    this.loading();
+  }
+  showloading(){
+    this.iconloading.style.display ="block";
+  }
+  hideloading(){
+    this.iconloading.style.display= "none";
+  }
+  loading(){
+    this.showloading();
+    setTimeout(()=>{
+      this.hideloading();
+    },800)
   }
   Menu(e: any) {
     this.list = document.querySelector('ul');

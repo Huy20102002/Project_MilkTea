@@ -16,8 +16,8 @@
     <div class="bg-white border-b   inset-x-0 navs">
         <div class="main_menu md:flex  md:mt-3 container mx-auto p-4  ">
             <div class="logo ml-3 flex justify-between items-center">
-                <img src="https://res.cloudinary.com/fpt-com/image/upload/v1651112762/milktea_x49uqg.png" width="60px"
-                    class="" alt="">
+                <img src="https://firebasestorage.googleapis.com/v0/b/empirical-oven-330915.appspot.com/o/logo.png?alt=media&token=d0a5f242-e3b2-4e9c-b3cb-d6732b061f4a" 
+                    class="md:w-[200px] w-[130px]" alt="">
                 <span class="md:hidden block cursor-pointer">
                     <ion-icon name="menu" (click)="Menu(this)" class="text-xl"></ion-icon>
                 </span>
@@ -26,13 +26,13 @@
                 <ul
                     class="md:flex  md:justify-between md:items-center m-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-8
                      md:pl-0 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in-out duration-500 text-center">
-                    <li><a routerLink="/" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Trang chủ</a></li>
-                    <li><a routerLink="/sanpham" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Sản Phẩm</a></li>
-                    <li><a routerLink="/gioithieu" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Giới Thiệu</a>
+                    <li><a (click)="loading()" routerLink="/" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Trang chủ</a></li>
+                    <li><a (click)="loading()" routerLink="/sanpham" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Sản Phẩm</a></li>
+                    <li><a (click)="loading()" routerLink="/gioithieu" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Giới Thiệu</a>
                     </li>
-                    <li><a routerLink="/tintuc" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tin Tức</a></li>
-                    <li><a class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Cửa Hàng</a></li>
-                    <li><a class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tuyển Dụng</a>
+                    <li><a (click)="loading()" routerLink="/tintuc" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tin Tức</a></li>
+                    <li><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Cửa Hàng</a></li>
+                    <li><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tuyển Dụng</a>
                     </li>
                     <li class="relative md:left-20">
                        <a routerLink="/giohang">

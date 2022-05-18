@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +13,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private AuthSerivce: AuthService) { }
   formLogin: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
+  messageNo: any;
   ngOnInit(): void {
   }
   googleLogin() {
@@ -32,9 +34,7 @@ export class LoginComponent implements OnInit {
     //   })
   }
   loginAuth() {
-    this.AuthSerivce.login(this.formLogin.value).subscribe(res => {
-
-    })
+    this.AuthSerivce.saveLogin(this.formLogin.value);
   }
 
 }

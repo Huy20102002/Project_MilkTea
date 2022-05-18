@@ -20,9 +20,12 @@
                 </div>
                 <div class="mb-6 w-full group">
                     <label for="">Hình ảnh</label>
-                    <input type="file" formControlName="image"
+                    <input type="file" (change)="changeImage($event)"
                         class="w-full  focus:outline-none focus:border-orange-500  border rounded py-1 mt-3 px-3"
                        >
+                </div>
+                <div class="mb-6">
+                    <img [src]="displayImage" class="w-[120px]" alt="">
                 </div>
              <div class="mb-6">
                 <button class="cursor-pointer  font-medium bg-blue-600 px-6 py-2 rounded dark:text-white text-white hover:underline">Thêm slide</button></div>

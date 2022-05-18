@@ -12,11 +12,13 @@ export class OrderDetailsComponent implements OnInit {
   constructor(private orderservice: OrderService, private Activated: ActivatedRoute) { }
   dataOrderDt: any;
   dataInfo: any;
-  daxacnhan: number = 1;
-  danggiaohang: number = 2;
-  dagiaohang: number = 3;
-  dahuy: number = 4;
-
+  daxacnhan: number = 2;
+  danggiaohang: number = 3;
+  dagiaohang: number = 4;
+  dahuy: number = 5;
+  status:number=0;
+  created_at:any;
+  updated_at:any;
   ngOnInit(): void {
     this.getOrderdetails();
     this.getOrder();
@@ -35,18 +37,22 @@ export class OrderDetailsComponent implements OnInit {
       const { id } = res;
       this.orderservice.getOrderId(id).subscribe(vl => {
         this.dataInfo = vl;
+        this.status = vl.status
+        this.created_at = vl.created_at;
+        this.updated_at = vl.updated_at;
       });
     });
   }
   changeStatus(status: any) {
+    console.log(status);
     let statusText;
-    if (status == 1) {
+    if (status == 2) {
       statusText = 'Đã xác nhận';
-    } else if (status == 2) {
-      statusText = 'Đang giao hàng';
     } else if (status == 3) {
-      statusText = 'Đã giao hàng';
+      statusText = 'Đang giao hàng';
     } else if (status == 4) {
+      statusText = 'Đã giao hàng';
+    } else if (status == 5) {
       statusText = 'Đã hủy';
     }
     Swal.fire({
@@ -55,14 +61,14 @@ export class OrderDetailsComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Xóa',
+      confirmButtonText: 'Ok',
       cancelButtonText: 'Hủy'
     }).then((result) => {
       if (result.isConfirmed) {
         this.Activated.params.subscribe(res => {
           const { id } = res;
           this.orderservice.updateStatusOrder(id, {status}).subscribe(vl => {
-                this.dataInfo.status = status;
+                this.status = status;
           })
         })
         Swal.fire(

@@ -13,6 +13,9 @@ export class SlideService {
   getAll():Observable<any>{
     return this.http.get<any>(`${environment.api_slide}`);
   }
+  getImage():Observable<any>{
+    return this.http.get<any>(`${environment.api_slide}image`);
+  }
   get(id:any):Observable<any>{
     return this.http.get<any>(`${environment.api_slide}/${id}`);
   }

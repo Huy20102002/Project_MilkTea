@@ -6,18 +6,16 @@
        
         
     </div>
-    <div class="search_order">
-        <form action="" class="flex p-5">
-            <input type="text"  class="w-full rounded-l-md  border p-2 focus:outline-none focus:border-blue-600 text-sm" placeholder="Nhập tên khách hàng or số điện thoại">
-            <select class="border outline-none">
+    <div class="search_order flex p-5">
+            <input type="text" [(ngModel)]="keyword" (keyup)="search()"  class="w-full rounded-l-md  border p-2 focus:outline-none focus:border-blue-600 text-sm" placeholder="Nhập tên khách hàng or số điện thoại">
+            <select class="border outline-none" [(ngModel)]="keywordStatus" (change)="search()">
                 <option value="">--Trạng thái--</option>
-                <option value="">Đơn hàng mới</option>
-                <option value="">Đã xác nhận</option>
-                <option value="">Đang giao hàng</option>
-                <option value="">Đã giao hàng</option>
-                <option value="">Đã hủy</option>
+                <option value="1">Đơn hàng mới</option>
+                <option value="2">Đã xác nhận</option>
+                <option value="3">Đang giao hàng</option>
+                <option value="4">Đã giao hàng</option>
+                <option value="5">Đã hủy</option>
             </select>
-        </form>
     </div>
     <div class="mt-5">
         <table class="w-full table-auto text-left divide-y divide-gray-300">
@@ -25,6 +23,7 @@
                 <tr>
                     <th class="text-gray-500 px-6 py-3">STT</th>
                     <th class="text-gray-500 px-6 py-3">Khách Hàng</th>
+                    <th class="text-gray-500 px-6 py-3">Số điện thoại</th>
                     <th class="text-gray-500 px-6 py-3">Tổng tiền</th>
                     <th class="text-gray-500 px-6 py-3">Trạng thái</th>
                     <th class="text-gray-500 px-6 py-3">Thời gian đặt hàng</th>
@@ -35,6 +34,7 @@
                 <tr *ngFor="let item of dataOrder | paginate: { itemsPerPage: 10, currentPage: p };index as i">
                     <td class="px-6 py-4">{{i+1}}</td>
                     <td class="px-6 py-4">{{item.name}}</td>
+                    <td class="px-6 py-4">{{item.phone}}</td>
                     <td class="px-6 py-4">{{item.sumprice |currency:"VND"}}</td>
                     <td class="px-6 py-4 "><span class="bg-green-100 text-green-800 font-semibold px-3 py-1 rounded">{{item.status|shipping}}</span></td>
                     <td class="px-6 py-4">{{item.created_at |date:'short'}}</td>

@@ -4,7 +4,8 @@
             <div class="form ">
                 <form [formGroup]="formLogin" (submit)="loginAuth()" class="container mx-auto">
                     <div class="logo ">
-                        <img src="https://res.cloudinary.com/fpt-com/image/upload/v1651112762/milktea_x49uqg.png" class="w-16 md:w-28 m-auto" alt="">
+                        <img src="https://res.cloudinary.com/fpt-com/image/upload/v1651112762/milktea_x49uqg.png"
+                            class="w-16 md:w-28 m-auto" alt="">
                     </div>
                     <div>
                         <h2 class="text-2xl flex justify-center font-semibold mt-3">Đăng nhập</h2>
@@ -12,28 +13,47 @@
                     <div class="mb-3 ">
                         <label for="">Email</label>
                         <br>
-                        <input type="email" formControlName="email" placeholder="Email...." class="w-full  px-4 py-2 mb-3 border rounded focus:outline-none focus:border-orange-500">
+                        <input type="email" formControlName="email" placeholder="Email...."
+                            class="w-full  px-4 py-2 mb-3 border rounded focus:outline-none focus:border-orange-500">
+                        <div *ngIf="formLogin.controls['email'].invalid && (formLogin.controls['email'].dirty ||formLogin.controls['email'].touched)" class="alert">
+                            <div class="text-red-600" *ngIf="formLogin.controls['email'].errors?.['required']">
+                               Vui lòng nhập email
+                            </div>
+                            <div  class="text-red-600" *ngIf="formLogin.controls['email'].errors?.['email']">
+                               Hãy nhập email đúng định dạng
+                             </div>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="">Password</label>
                         <br>
                         <input type='password' formControlName="password" placeholder="Password....."
-                        class=" mb-3 px-4 w-full py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-orange-500" />
+                            class=" mb-3 px-4 w-full py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-orange-500" />
+                            <div *ngIf="formLogin.controls['password'].invalid && (formLogin.controls['password'].dirty ||formLogin.controls['password'].touched)" class="alert">
+                                <div class="text-red-600" *ngIf="formLogin.controls['password'].errors?.['required']">
+                                   Vui lòng nhập mật khẩu
+                                </div>
+                                <div  class="text-red-600" *ngIf="formLogin.controls['password'].errors?.['minlength']">
+                                  Mật khẩu ít nhất 6 chữ số
+                                 </div>
+                            </div>
+                        </div>
+                    <div class=" flex justify-center ">
+                        <button [disabled]="formLogin.invalid"  class="text-white py-2 px-28  rounded text-sm tracking-wider mb-6"
+                            style="background-color:#1977f2;">Đăng Nhập</button>
                     </div>
                     <div class=" flex justify-center ">
-                        <button class="text-white py-2 px-28  rounded text-sm tracking-wider mb-6" style="background-color:#1977f2;">Đăng Nhập</button>
-                    </div>
-                    <div class=" flex justify-center ">
-                        <button class="text-white py-2 px-20  rounded text-sm tracking-wider mb-6 bg-red-500" >Đăng nhập bằng google</button>
+                        <button class="text-white py-2 px-20  rounded text-sm tracking-wider mb-6 bg-red-500">Đăng nhập
+                            bằng google</button>
                     </div>
                 </form>
                 <div class="user_login ">
-                   <div class="forgot flex justify-center">
-                    <a routerLink="" class="">Bạn quên mật khẩu ?</a>
-                   </div> 
-                   <div class="register flex justify-center">
-                    <span>Bạn chưa có tài khoản ? </span> <a routerLink="/account-register" class=""> Đăng ký </a>
-                   </div>
+                    <div class="forgot flex justify-center">
+                        <a routerLink="" class="">Bạn quên mật khẩu ?</a>
+                    </div>
+                    <div class="register flex justify-center">
+                        <span>Bạn chưa có tài khoản ? </span> <a routerLink="/account-register" class=""> Đăng ký </a>
+                    </div>
                 </div>
             </div>
         </div>

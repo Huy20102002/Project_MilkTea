@@ -18,7 +18,6 @@ export class CategoryComponent implements OnInit {
   get(searchkey:string="") {
     this.CategoriService.getAll(searchkey).subscribe(res => {
         const {data}= res;
-        console.log(res);
         this.listCate = data;
     })
   }
