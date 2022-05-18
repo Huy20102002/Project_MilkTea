@@ -43,7 +43,7 @@ import { OrderComponent } from './screen/admin/order/order.component';
 import { OrderDetailsComponent } from './screen/admin/order-details/order-details.component';
 import { PipeProductPipe } from './untils/pipes/pipe-product.pipe';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { SizeAddComponent } from './screen/admin/size/size-add/size-add.component';
 import { SizeEidtComponent } from './screen/admin/size/size-eidt/size-eidt.component';
 import { ToppingAddComponent } from './screen/admin/topping/topping-add/topping-add.component';
