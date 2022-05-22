@@ -61,7 +61,16 @@ import { CategoryclientComponent } from './screen/categoryclient/categoryclient.
 import { OrderSucessComponent } from './screen/order-sucess/order-sucess.component';
 import { ShippingPipe } from './untils/pipes/shipping.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { AddressComponent } from './screen/address/address.component';
+import { HistoryComponent } from './screen/history/history.component';
+import { ChangepasswordComponent } from './screen/changepassword/changepassword.component';
+import { NavprofileComponent } from './component/navprofile/navprofile.component';
+import { LayoutprofileComponent } from './screen/layoutprofile/layoutprofile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,6 +120,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CategoryclientComponent,
     OrderSucessComponent,
     ShippingPipe,
+    AddressComponent,
+    HistoryComponent,
+    ChangepasswordComponent,
+    NavprofileComponent,
+    LayoutprofileComponent,
 
   ],
   imports: [
@@ -127,7 +141,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     ToastrModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    // Mato
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
     
   ],
   providers: [

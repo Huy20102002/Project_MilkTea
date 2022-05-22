@@ -1,4 +1,4 @@
-<header class="md:mt-3 ">
+<header class="md:mt-3 font-lato">
     <div class="top_menu md:flex md:items-center  bg-white md:justify-center hidden">
         <div class="location flex items-center px-24">
             <i class="fal fa-map-marker-alt  text-xl text-orange-600"></i>
@@ -13,38 +13,63 @@
             <span class="text-xs ml-2">Freeship đơn từ {{ 50000 | currency: "VND"}}</span>
         </div>
     </div>
-    <div class="bg-white border-b   inset-x-0 navs">
-        <div class="main_menu md:flex  md:mt-3 container mx-auto p-4  ">
+    <div class="bg-white border-b  navs">
+        <div class="main_menu md:flex container mx-auto max-w-[1280px]  md:mt-3  py-3 justify-between ">
             <div class="logo ml-3 flex justify-between items-center">
                 <img src="https://firebasestorage.googleapis.com/v0/b/empirical-oven-330915.appspot.com/o/logo.png?alt=media&token=d0a5f242-e3b2-4e9c-b3cb-d6732b061f4a" 
                     class="md:w-[200px] w-[130px]" alt="">
                 <span class="md:hidden block cursor-pointer">
-                    <ion-icon name="menu" (click)="Menu(this)" class="text-xl"></ion-icon>
+                    <i (click)="Menu(this)" class="text-[20px] mr-3 {{navicon}}"></i>
                 </span>
             </div>
-            <nav class="md:flex container mx-auto items-center zindex ">
-                <ul
-                    class="md:flex  md:justify-between md:items-center m-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-8
-                     md:pl-0 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in-out duration-500 text-center">
-                    <li><a (click)="loading()" routerLink="/" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Trang chủ</a></li>
-                    <li><a (click)="loading()" routerLink="/sanpham" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Sản Phẩm</a></li>
-                    <li><a (click)="loading()" routerLink="/gioithieu" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Giới Thiệu</a>
+           <div>
+            <div>
+                <nav class="md:block hidden nav w-full h-full " [class.menuClass]="menuVarible">
+                    <ul
+                    class="md:flex   md:justify-between md:items-center    md:py-0  transition-all ease-in-out duration-500 text-center">
+                    <li class="md:pb-0 pb-[20px]"><a (click)="loading()" routerLink="/" class="block px-4 cursor-pointer  duration-300  hover:text-orange-600 text-black text-lg">Trang chủ</a></li>
+                    <li class="menuproduct md:pb-0 pb-[20px]"><a (click)="loading()" routerLink="/sanpham" class=" md:flex items-center  text-center px-4 cursor-pointer  duration-300 hover:text-orange-600 text-black text-lg">Sản Phẩm
+                        <svg class="hidden md:block ml-2 mt-1" width="9" height="5" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.99992 3.33332L0.333252 0.666656H5.66659L2.99992 3.33332Z" fill="black" fill-opacity="0.6"></path>
+                        </svg>
+                
+                    </a>
+                    <div class="menucate   border-b w-full ">
+                        <li *ngFor="let item of dataCate" class="pb-3">
+                            <a class="hover:text-orange-600 duration-300" routerLink="/danhmuc/{{item.id}}">{{item.name}}</a>
+                        </li>
+                    </div>
+                  
+                   </li>
+                    <li class="md:pb-0 pb-[20px]"><a (click)="loading()" routerLink="/gioithieu" class="block px-4 cursor-pointer duration-300  hover:text-orange-600 text-black text-lg">Giới Thiệu</a>
                     </li>
-                    <li><a (click)="loading()" routerLink="/tintuc" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tin Tức</a></li>
-                    <li><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Cửa Hàng</a></li>
-                    <li><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600 text-black text-lg">Tuyển Dụng</a>
+                    <li class="md:pb-0 pb-[20px]"><a (click)="loading()" routerLink="/tintuc" class="block px-4 cursor-pointer  duration-300 hover:text-orange-600 text-black text-lg">Tin Tức</a></li>
+                    <li class="md:pb-0 pb-[20px]"><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600 duration-300  text-black text-lg">Cửa Hàng</a></li>
+                    <li class="md:pb-0 pb-[20px]"><a (click)="loading()" class="block px-4 cursor-pointer hover:text-orange-600  duration-300 text-black text-lg">Tuyển Dụng</a>
                     </li>
-                    <li class="relative md:left-20">
-                       <a routerLink="/giohang">
-                        <i class="far fa-shopping-cart text-[24px]"></i>
-                       </a>
-                       <a routerLink="/canhan" class="m-3">
-                         <i class="far fa-user-circle text-[26px]"></i>
+                    <div class="block md:hidden md:left-20">
+                        <a routerLink="/giohang">
+                         <i class="far fa-shopping-cart text-[24px]"></i>
                         </a>
-                        <!-- <a routerLink="account-login" class="text-black">Đăng Nhập</a>/ <a routerLink="account-register" class="text-black">Đăng Ký</a> -->
-                    </li>
+                        <a routerLink="/canhan" class="m-3">
+                          <i class="far fa-user-circle text-[26px]"></i>
+                         </a>
+                         <!-- <a routerLink="account-login" class="text-black">Đăng Nhập</a>/ <a routerLink="account-register" class="text-black">Đăng Ký</a> -->
+                      </div>
                 </ul>
-            </nav>
+
+                </nav>
+            </div>
+           </div>
+           <div class="hidden md:block md:left-20">
+            <a routerLink="/giohang">
+             <i class="far fa-shopping-cart text-[24px]"></i>
+            </a>
+            <a routerLink="/canhan" class="m-3">
+              <i class="far fa-user-circle text-[26px]"></i>
+             </a>
+             <!-- <a routerLink="account-login" class="text-black">Đăng Nhập</a>/ <a routerLink="account-register" class="text-black">Đăng Ký</a> -->
+          </div>
         </div>
     </div>
   

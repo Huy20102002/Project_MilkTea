@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from 'src/app/service/categories.service';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private CategoryService:CategoriesService) { }
 
   list: any;
   iconloading:any;
+  dataCate:any;
+  button:any;
+  navmenu:any;
+  navicon:string = 'fas fa-bars';
+  menuVarible:boolean=false;
   ngOnInit(): void {
     window.addEventListener("scroll", function () {
       const header = document.querySelector('.navs');
@@ -18,6 +24,7 @@ export class HeaderComponent implements OnInit {
     });
     this.iconloading = document.getElementById("loading");
     this.loading();
+    this.listCate();
   }
   showloading(){
     this.iconloading.style.display ="block";
@@ -25,15 +32,29 @@ export class HeaderComponent implements OnInit {
   hideloading(){
     this.iconloading.style.display= "none";
   }
+ 
+  Menu(e: any) {
+    this.menuVarible =!this.menuVarible;
+    if(this.menuVarible==true){
+      this.navicon = 'fas fa-times'
+    }else{
+      this.navicon = 'fas fa-bars'
+    }
+    
+  }
   loading(){
     this.showloading();
     setTimeout(()=>{
       this.hideloading();
     },800)
+    this.menuVarible = false;
+    this.navicon = 'fas fa-bars'
+
   }
-  Menu(e: any) {
-    this.list = document.querySelector('ul');
-    console.log(this.list)
-    e.name === 'menu' ? (e.name = "close", this.list.classList.add('top-[80px]'), this.list.classList.add('opacity-100')) : (e.name = "menu", this.list.classList.remove('top-[80px]'), this.list.classList.remove('opacity-100'))
+  listCate(){
+    this.CategoryService.getAll().subscribe(res=>{
+      const {data} = res;
+      this.dataCate = data;
+    })
   }
 }

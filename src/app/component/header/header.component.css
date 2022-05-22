@@ -5,23 +5,98 @@
 /* .banner{
    display: none;
 } */
-.sticky {
-   background-color: rgba(255, 255, 255, 0.568);
-    position: fixed;
-    top: 0;
-    z-index: 999998;
-    display: block;
-    transition: all 3s ease-in-out;
-}
+
 
 .navs {
-    /* transition: all .5s ease-in; */
-    /* transition: all .5s ease-in-out; */
-    top: 0;
+
+    z-index: 100000;
+}
+
+.sticky {
     left: 0;
     right: 0;
+    background-color: rgba(255, 255, 255, 0.568);
+    position: fixed;
+    top: 0;
+    display: block;
+    transition: all 5s ease-in-out;
+
+}
+
+@keyframes nav {
+    0% {
+        transition: translateY(100px);
+    }
+
+    100% {
+        transition: translateY(0px);
+    }
 }
 
 ul {
     z-index: 999997;
 }
+
+.menucate {
+    display: none;
+    z-index: 999998;
+    position: relative;
+    background-color: #fff;
+    animation: slidedown 0.4s;
+}
+
+@keyframes slidedown {
+    0% {
+        transform: translateY(50px);
+        background-color: rgba(255, 255, 255, 0.345);
+    }
+
+    100% {
+
+        background-color: rgba(255, 255, 255, 0.814);
+    }
+
+}
+
+/* .menuproduct:hover .menucate{
+} */
+.menuproduct:hover .menucate {
+    display: block;
+
+    position: absolute;
+    left: 0;
+    /* bottom: 10px; */
+    /* width: 1; */
+    /* top: ; */
+}
+.menucate ul {
+    margin-bottom: 50px;
+}
+
+.menuClass {
+    position: absolute;
+    background-color: #fff;
+    right: 0;
+    animation: menuclass 0.4s;
+    display: block;
+    transition: 0.4s ease-in-out;
+    z-index: 999997;
+}
+
+@keyframes menuclass {
+    0% {
+        transform: translateX(50px);
+        background-color: rgba(255, 255, 255, 0.345);
+    }
+
+    100% {
+
+        background-color: rgba(255, 255, 255, 0.814);
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }

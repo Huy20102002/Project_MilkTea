@@ -1,0 +1,10 @@
+.product_milk:hover .milk_text {
+    transform: translateY(0px);
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    transition: .5s;
+    
+}
+.milk_text {
+    z-index: 1000;
+}

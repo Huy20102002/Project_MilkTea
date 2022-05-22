@@ -36,6 +36,10 @@ import {OrderClientComponent} from './screen/order-client/order-client.component
 import { CategoryclientComponent } from './screen/categoryclient/categoryclient.component';
 import { OrderSucessComponent } from './screen/order-sucess/order-sucess.component';
 import { AuthGuard } from './service/AuthGuard';
+import { LayoutprofileComponent } from './screen/layoutprofile/layoutprofile.component';
+import { AddressComponent } from './screen/address/address.component';
+import { HistoryComponent } from './screen/history/history.component';
+import { ChangepasswordComponent } from './screen/changepassword/changepassword.component';
 const routes: Routes = [
   {
     path: "", component: HomelayoutComponent, children: [
@@ -67,8 +71,22 @@ const routes: Routes = [
         path: "thanhcong",component: OrderSucessComponent
       },
       {
-        path: "canhan",component:ProfileComponent
-      }
+        path: "canhan",component:LayoutprofileComponent,children: [
+          {
+            path: "",component: ProfileComponent
+          },
+          {
+            path: "diachi",component: AddressComponent
+          },
+          {
+            path: "lichsu",component: HistoryComponent
+          },
+          {
+            path:"doimatkhau",component: ChangepasswordComponent
+          }
+        ]
+      },
+     
     ]
   },
   {
